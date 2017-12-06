@@ -1,9 +1,3 @@
 ---
 
-- name: install libsnappy
-  become: yes
-  apt:
-    name: libsnappy-dev
-    state: present
-    update_cache: yes
-    cache_valid_time: 3600
+- include: "{{ ansible_distribution }}.yml"

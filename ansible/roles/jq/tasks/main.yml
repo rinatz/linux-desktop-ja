@@ -1,8 +1,3 @@
 ---
 
-- name: download jq
-  become: yes
-  get_url:
-    url: https://github.com/stedolan/jq/releases/download/jq-{{ jq_version }}/jq-linux64
-    dest: /usr/local/bin/jq
-    mode: 0755
+- include: "{{ ansible_distribution }}.yml"

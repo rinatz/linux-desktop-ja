@@ -1,9 +1,3 @@
 ---
 
-- name: install bash-completion
-  become: yes
-  apt:
-    name: bash-completion
-    state: present
-    update_cache: yes
-    cache_valid_time: 3600
+- include: "{{ ansible_distribution }}.yml"

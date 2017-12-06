@@ -1,24 +1,3 @@
 ---
 
-- name: add apt repository
-  become: yes
-  apt_repository:
-    repo: 'ppa:git-core/ppa'
-
-- name: install packages
-  become: yes
-  apt:
-    name: "{{ item }}"
-    state: present
-    update_cache: yes
-    cache_valid_time: 3600
-  with_items:
-    - git
-    - openssh-client
-    - procps
-
-- name: install git-lfs
-  become: yes
-  shell: curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | bash
-  args:
-    warn: no
+- include: "{{ ansible_distribution }}.yml"

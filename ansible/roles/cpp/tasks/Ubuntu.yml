@@ -1,0 +1,37 @@
+---
+
+- name: install c++ tools
+  become: yes
+  apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: yes
+    cache_valid_time: 3600
+  with_items:
+    - ccache
+    - cmake
+    - gdb
+    - graphviz
+    - libboost1.55-all-dev
+    - ninja-build
+    - qt5-qmake
+    - valgrind
+
+- name: enable ccache
+  become: yes
+  file:
+    src: /usr/bin/ccache
+    dest: /usr/local/bin/{{ item }}
+    state: link
+  with_items:
+    - cc
+    - c++
+    - gcc
+    - g++
+
+- name: enable qmake
+  become: yes
+  file:
+    src: /usr/lib/x86_64-linux-gnu/qt5/bin/qmake
+    dest: /usr/local/bin/qmake
+    state: link
