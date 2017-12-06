@@ -13,4 +13,4 @@
       name: ubuntu-make
       state: present
       update_cache: "{{ add_apt_repo|changed }}"
-  when: ansible_distribution == Ubuntu
+  when: ansible_distribution == "Ubuntu"
