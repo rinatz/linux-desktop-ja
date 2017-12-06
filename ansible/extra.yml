@@ -1,0 +1,31 @@
+---
+
+- hosts: all
+  roles:
+    - apache
+    - cctz
+    - cifs-utils
+    - clang
+    - cppitertools
+    - czmq
+    - dlang
+    - fmt
+    - gflags
+    - gperftools
+    - gtest
+    - java
+    - jq
+    - kyotocabinet
+    - liblz4
+    - liblzo2
+    - libsnappy
+    - libxml2-utils
+    - libzip
+    - nkf
+    - picojson
+    - protobuf
+    - spdlog
+    - swig
+    - tree
+    - yaml-cpp
+    - zeromq

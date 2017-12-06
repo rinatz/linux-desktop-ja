@@ -1,0 +1,6 @@
+---
+
+- include: bootstrap.yml
+- include: develop.yml
+- include: extra.yml
+- include: ide.yml

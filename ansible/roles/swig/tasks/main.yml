@@ -1,0 +1,31 @@
+---
+
+- name: ensure downloaded
+  stat:
+    path: /usr/local/src/swig-{{ swig_version }}
+  register: src_dir
+
+# unarchive fails with SSL validation because of lack of the feature of SNI.
+- name: download
+  become: yes
+  shell: curl -fsSL http://prdownloads.sourceforge.net/swig/swig-{{ swig_version }}.tar.gz | tar zxv
+  args:
+    chdir: /usr/local/src
+    warn: no
+  when: not src_dir.stat.exists
+
+- name: compile and install
+  become: yes
+  shell: "{{ item }}"
+  args:
+    chdir: /usr/local/src/swig-{{ swig_version }}
+  with_items:
+    - ./configure --prefix=/usr/local/stow/swig-{{ swig_version }}
+    - make
+    - make install
+
+- name: stow
+  become: yes
+  shell: stow -R swig-{{ swig_version }}
+  args:
+    chdir: /usr/local/stow

@@ -1,0 +1,20 @@
+---
+
+- name: ensure downloaded
+  stat:
+    path: /usr/local/stow/{{ clang }}
+  register: install_dir
+
+- name: download
+  become: yes
+  unarchive:
+    src: http://llvm.org/releases/{{ clang_version }}/{{ clang }}.tar.xz
+    dest: /usr/local/stow
+    remote_src: yes
+  when: not install_dir.stat.exists
+
+- name: stow
+  become: yes
+  shell: stow -R {{ clang }}
+  args:
+    chdir: /usr/local/stow

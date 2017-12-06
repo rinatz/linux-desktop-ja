@@ -1,0 +1,17 @@
+---
+
+- hosts: all
+  roles:
+    - scm
+    - buildpack
+    - bash-completion
+    - docker
+    - docker-compose
+    - dotfiles
+    - fonts
+    - nvm
+    - ptrace
+    - pyenv
+    - python-dev
+    - rbenv
+    - stow

@@ -1,0 +1,30 @@
+---
+
+- name: ensure downloaded
+  stat:
+    path: /usr/local/src/fmt-{{ fmt_version }}
+  register: src_dir
+
+- name: unarchive source
+  become: yes
+  unarchive:
+    src: https://github.com/fmtlib/fmt/archive/{{ fmt_version }}.tar.gz
+    dest: /usr/local/src
+    remote_src: yes
+  when: not src_dir.stat.exists
+
+- name: compile and install
+  become: yes
+  shell: "{{ item }}"
+  args:
+    chdir: /usr/local/src/fmt-{{ fmt_version }}
+  with_items:
+    - cmake -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/local/stow/fmt-{{ fmt_version }} .
+    - ninja
+    - ninja install
+
+- name: stow
+  become: yes
+  shell: stow -R fmt-{{ fmt_version }}
+  args:
+    chdir: /usr/local/stow

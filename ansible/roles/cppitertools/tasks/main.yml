@@ -1,0 +1,47 @@
+---
+
+- name: ensure downloaded
+  stat:
+    path: /usr/local/src/cppitertools-{{ cppitertools_version }}
+  register: src_dir
+
+- name: download
+  become: yes
+  unarchive:
+    src: https://github.com/ryanhaining/cppitertools/archive/v{{ cppitertools_version }}.tar.gz
+    dest: /usr/local/src
+    remote_src: yes
+  when: not src_dir.stat.exists
+
+- name: create directory
+  become: yes
+  file:
+    path: "{{ item }}"
+    state: directory
+  with_items:
+    - /usr/local/stow/cppitertools-{{ cppitertools_version }}/include/cppitertools
+    - /usr/local/stow/cppitertools-{{ cppitertools_version }}/include/cppitertools/internal
+
+- name: copy files
+  become: yes
+  copy:
+    src: "{{ item }}"
+    dest: /usr/local/stow/cppitertools-{{ cppitertools_version }}/include/cppitertools
+    remote_src: yes
+  with_fileglob:
+    - /usr/local/src/cppitertools-{{ cppitertools_version }}/*.hpp
+
+- name: copy files
+  become: yes
+  copy:
+    src: "{{ item }}"
+    dest: /usr/local/stow/cppitertools-{{ cppitertools_version }}/include/cppitertools/internal
+    remote_src: yes
+  with_fileglob:
+    - /usr/local/src/cppitertools-{{ cppitertools_version }}/internal/*.hpp
+
+- name: stow
+  become: yes
+  shell: stow -R cppitertools-{{ cppitertools_version }}
+  args:
+    chdir: /usr/local/stow
