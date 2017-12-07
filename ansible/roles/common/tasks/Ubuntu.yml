@@ -1,13 +1,9 @@
 ---
 
-- name: set timezone to Asia/Tokyo
+- name: set timezone
   become: yes
   timezone:
     name: Asia/Tokyo
-
-- name: dpkg-reconfigure tzdata
-  become: yes
-  shell: dpkg-reconfigure --frontend noninteractive tzdata
 
 - name: change ubuntu apt repository
   become: yes
@@ -15,7 +11,7 @@
     dest: /etc/apt/sources.list
     regexp: 'http://archive.ubuntu.com/ubuntu'
     replace: 'http://ftp.yz.yamagata-u.ac.jp/pub/linux/ubuntu/archives'
-  register: change_apt_repo
+  register: ubuntu_repo
 
 - name: add apt key
   become: yes
@@ -31,14 +27,10 @@
   get_url:
     url: https://www.ubuntulinux.jp/sources.list.d/trusty.list
     dest: /etc/apt/sources.list.d/ubuntu-ja.list
-  register: add_apt_repo
+  register: ubuntu_ja_repo
 
-- name: install packages
+- name: update repositories
   become: yes
   apt:
-    name: "{{ item }}"
-    state: present
-    update_cache: "{{ change_apt_repo|changed or add_apt_repo|changed }}"
-  with_items:
-    - ubuntu-desktop
-    - ubuntu-defaults-ja
+    update_cache: yes
+  when: ubuntu_repo|changed or ubuntu_ja_repo|changed
