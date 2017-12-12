@@ -6,5 +6,5 @@
   register: install_dir
 
 - name: install visual-studio-code
-  shell: umake ide visual-studio-code ~/.local/share/umake/ide/visual-studio-code
+  shell: yes a | umake ide visual-studio-code ~/.local/share/umake/ide/visual-studio-code
   when: not install_dir.stat.exists
