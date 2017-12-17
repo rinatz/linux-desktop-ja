@@ -19,7 +19,7 @@ Linux の日本語デスクトップ環境を作るための Vagrantfile です�
 [Vagrant]: https://www.vagrantup.com/
 [VirtualBox]: https://www.virtualbox.org/
 
-    注意
+**注意**
 
     動作確認は Vagrant 2.0.1 と VirtualBox 5.2.0 で行っています。
     バージョンの組み合わせがシビアで、
