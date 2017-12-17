@@ -1,0 +1,26 @@
+---
+
+- name: install packages
+  become: yes
+  yum:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - yum-utils
+    - device-mapper-persistent-data
+    - lvm2
+
+- name: add yum repository
+  becom: yes
+  shell: yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+
+- name: install docker
+  become: yes
+  yum:
+    name: docker-ce
+    state: present
+
+- name: add vagrant user to docker group
+  become: yes
+  shell: usermod -aG docker vagrant
+  when: ansible_user_id == "vagrant"
