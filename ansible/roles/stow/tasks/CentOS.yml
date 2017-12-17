@@ -1,0 +1,7 @@
+---
+
+- name: install stow
+  become: yes
+  yum:
+    name: stow
+    state: present
