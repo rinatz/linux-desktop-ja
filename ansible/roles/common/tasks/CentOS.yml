@@ -4,3 +4,8 @@
   become: yes
   timezone:
     name: Asia/Tokyo
+
+- name: add yum repository
+  become: yes
+  yum:
+    name: epel-release
