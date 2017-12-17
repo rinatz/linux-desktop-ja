@@ -1,0 +1,16 @@
+---
+
+- name: install packages
+  become: yes
+  yum:
+    name: "{{ item }}"
+  with_items:
+    - git
+    - openssh-clients
+    - procps-ng
+
+- name: install git-lfs
+  become: yes
+  shell: curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.rpm.sh | bash
+  args:
+    warn: no
