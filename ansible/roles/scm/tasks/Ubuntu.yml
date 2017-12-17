@@ -4,14 +4,14 @@
   become: yes
   apt_repository:
     repo: 'ppa:git-core/ppa'
+  register: git_repo
 
 - name: install packages
   become: yes
   apt:
     name: "{{ item }}"
     state: present
-    update_cache: yes
-    cache_valid_time: 3600
+    update_cache: "{{ git_repo|changed }}"
   with_items:
     - git
     - openssh-client
