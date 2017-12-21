@@ -8,7 +8,6 @@
     - docker
     - docker-compose
     - dotfiles
-    - fonts
     - nvm
     - ptrace
     - pyenv

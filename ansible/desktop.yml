@@ -3,6 +3,7 @@
 - hosts: all
   roles:
     - desktop
+    - fonts
     - eclipse-cpp
     - idea
     - pycharm
