@@ -1,0 +1,17 @@
+---
+
+- name: install packages
+  become: yes
+  yum:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - httpd
+    - mod_fcgid
+    - fcgi-devel
+
+- name: start httpd
+  become: yes
+  service:
+    name: httpd
+    state: started
