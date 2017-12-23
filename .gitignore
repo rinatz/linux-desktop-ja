@@ -1,2 +1,15 @@
-*.retry
+
+# Created by https://www.gitignore.io/api/vagrant
+
+### Vagrant ###
 .vagrant/
+*.box
+
+# End of https://www.gitignore.io/api/vagrant
+
+# Created by https://www.gitignore.io/api/ansible
+
+### Ansible ###
+*.retry
+
+# End of https://www.gitignore.io/api/ansible
