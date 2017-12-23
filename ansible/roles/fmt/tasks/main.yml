@@ -20,8 +20,8 @@
     chdir: /usr/local/src/fmt-{{ fmt_version }}
   with_items:
     - cmake -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/local/stow/fmt-{{ fmt_version }} .
-    - ninja
-    - ninja install
+    - /usr/local/bin/ninja
+    - /usr/local/bin/ninja install
 
 - name: stow
   become: yes

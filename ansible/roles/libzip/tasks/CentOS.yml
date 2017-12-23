@@ -1,0 +1,7 @@
+---
+
+- name: install libzip-devel
+  become: yes
+  yum:
+    name: libzip-devel
+    state: present

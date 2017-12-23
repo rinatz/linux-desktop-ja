@@ -7,3 +7,5 @@
     state: present
   with_items:
     - "@Development Tools"
+    - pcre-devel
+    - zlib-devel

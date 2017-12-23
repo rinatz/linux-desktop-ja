@@ -1,7 +1,7 @@
 ---
 
-- name: install tree
+- name: install cmake
   become: yes
   yum:
-    name: tree
+    name: cmake
     state: present

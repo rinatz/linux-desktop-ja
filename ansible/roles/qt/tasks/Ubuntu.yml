@@ -1,0 +1,16 @@
+---
+
+- name: install qt
+  become: yes
+  apt:
+    name: qt5-qmake
+    state: present
+    update_cache: yes
+    cache_valid_time: 3600
+
+- name: enable qmake
+  become: yes
+  file:
+    src: /usr/lib/x86_64-linux-gnu/qt5/bin/qmake
+    dest: /usr/local/bin/qmake
+    state: link

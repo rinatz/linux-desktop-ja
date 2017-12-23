@@ -1,0 +1,9 @@
+---
+
+- name: install graphviz
+  become: yes
+  apt:
+    name: graphviz
+    state: present
+    update_cache: yes
+    cache_valid_time: 3600

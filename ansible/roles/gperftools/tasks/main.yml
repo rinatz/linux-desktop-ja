@@ -1,3 +1,30 @@
 ---
 
-- include: "{{ ansible_distribution }}.yml"
+- name: ensure downloaded
+  stat:
+    path: /usr/local/src/gperftools-{{ gperftools_version }}
+  register: src_dir
+
+- name: download
+  become: yes
+  unarchive:
+    src: https://github.com/gperftools/gperftools/releases/download/gperftools-{{ gperftools_version }}/gperftools-{{ gperftools_version }}.tar.gz
+    dest: /usr/local/src
+    remote_src: yes
+  when: not src_dir.stat.exists
+
+- name: compile and install
+  become: yes
+  shell: "{{ item }}"
+  args:
+    chdir: /usr/local/src/gperftools-{{ gperftools_version }}
+  with_items:
+    - ./configure --prefix=/usr/local/stow/gperftools-{{ gperftools_version }}
+    - make
+    - make install
+
+- name: stow
+  become: yes
+  shell: stow -R gperftools-{{ gperftools_version }}
+  args:
+    chdir: /usr/local/stow

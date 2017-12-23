@@ -1,3 +1,30 @@
 ---
 
-- include: "{{ ansible_distribution }}.yml"
+- name: ensure downloaded
+  stat:
+    path: /usr/local/src/libsodium-{{ sodium_version }}
+  register: src_dir
+
+- name: download
+  become: yes
+  unarchive:
+    src: https://github.com/jedisct1/libsodium/releases/download/{{ sodium_version }}/libsodium-{{ sodium_version }}.tar.gz
+    dest: /usr/local/src
+    remote_src: yes
+  when: not src_dir.stat.exists
+
+- name: compile and install
+  become: yes
+  shell: "{{ item }}"
+  args:
+    chdir: /usr/local/src/libsodium-{{ sodium_version }}
+  with_items:
+    - ./configure --prefix=/usr/local/stow/libsodium-{{ sodium_version }}
+    - make
+    - make install
+
+- name: stow
+  become: yes
+  shell: stow -R libsodium-{{ sodium_version }}
+  args:
+    chdir: /usr/local/stow

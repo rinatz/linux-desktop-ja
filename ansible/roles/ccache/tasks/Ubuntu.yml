@@ -1,0 +1,20 @@
+---
+
+- name: install ccache
+  become: yes
+  apt:
+    name: ccache
+    update_cache: yes
+    cache_valid_time: 3600
+
+- name: enable ccache
+  become: yes
+  file:
+    src: /usr/bin/ccache
+    dest: /usr/local/bin/{{ item }}
+    state: link
+  with_items:
+    - cc
+    - c++
+    - gcc
+    - g++

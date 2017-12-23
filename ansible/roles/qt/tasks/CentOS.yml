@@ -1,0 +1,14 @@
+---
+
+- name: install qt
+  become: yes
+  yum:
+    name: qt5-qtbase-devel
+    state: present
+
+- name: enable qmake
+  become: yes
+  file:
+    src: /usr/lib64/qt5/bin/qmake
+    dest: /usr/local/bin/qmake
+    state: link

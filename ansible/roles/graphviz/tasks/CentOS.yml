@@ -1,7 +1,7 @@
 ---
 
-- name: install tree
+- name: install graphviz
   become: yes
   yum:
-    name: tree
+    name: graphviz
     state: present

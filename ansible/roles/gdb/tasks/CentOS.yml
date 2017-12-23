@@ -1,7 +1,7 @@
 ---
 
-- name: install tree
+- name: install gdb
   become: yes
   yum:
-    name: tree
+    name: gdb
     state: present

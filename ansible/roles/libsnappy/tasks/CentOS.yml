@@ -1,0 +1,7 @@
+---
+
+- name: install snappy-devel
+  become: yes
+  yum:
+    name: snappy-devel
+    state: present

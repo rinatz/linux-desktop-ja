@@ -1,0 +1,34 @@
+---
+
+- hosts: all
+  roles:
+    - ccache
+    - cmake
+    - ninja
+    - stow
+    - boost
+    - cctz
+    - clang
+    - cppitertools
+    - czmq
+    - fmt
+    - gdb
+    - gflags
+    - gperftools
+    - graphviz
+    - gtest
+    - kyotocabinet
+    - liblz4
+    - liblzo2
+    - libsnappy
+    - libxml2-utils
+    - libzip
+    - picojson
+    - protobuf
+    - ptrace
+    - qt
+    - spdlog
+    - swig
+    - valgrind
+    - yaml-cpp
+    - zeromq

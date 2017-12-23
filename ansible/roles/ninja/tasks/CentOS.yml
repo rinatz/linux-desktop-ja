@@ -1,0 +1,14 @@
+---
+
+- name: install ninja
+  become: yes
+  yum:
+    name: ninja-build
+    state: present
+
+- name: enable ninja
+  become: yes
+  file:
+    src: /usr/bin/ninja-build
+    dest: /usr/local/bin/ninja
+    state: link

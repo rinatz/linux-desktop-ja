@@ -1,3 +1,30 @@
 ---
 
-- include: "{{ ansible_distribution }}.yml"
+- name: ensure downloaded
+  stat:
+    path: /usr/local/src/protobuf-{{ protobuf_version }}
+  register: src_dir
+
+- name: download
+  become: yes
+  unarchive:
+    src: https://github.com/google/protobuf/releases/download/v{{ protobuf_version }}/protobuf-{{ protobuf_version }}.tar.gz
+    dest: /usr/local/src
+    remote_src: yes
+  when: not src_dir.stat.exists
+
+- name: compile and install
+  become: yes
+  shell: "{{ item }}"
+  args:
+    chdir: /usr/local/src/protobuf-{{ protobuf_version }}
+  with_items:
+    - ./configure --prefix=/usr/local/stow/protobuf-{{ protobuf_version }} --with-pic
+    - make
+    - make install
+
+- name: stow
+  become: yes
+  shell: stow -R protobuf-{{ protobuf_version }}
+  args:
+    chdir: /usr/local/stow

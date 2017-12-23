@@ -1,0 +1,7 @@
+---
+
+- name: install yaml-cpp
+  become: yes
+  yum:
+    name: yaml-cpp-devel
+    state: present
