@@ -2,11 +2,11 @@
 # vi: set ft=ruby :
 
 Vagrant.configure("2") do |config|
-  config.vm.box = "bento/ubuntu-14.04"
+  # config.vm.box = "bento/ubuntu-14.04"
   # config.vm.box = "bento/ubuntu-16.04"
-  # config.vm.box = "bento/centos-7.2"
+  config.vm.box = "bento/centos-7.2"
 
-  config.vm.network "private_network", type: "dhcp"
+  # config.vm.network "private_network", type: "dhcp"
 
   config.vm.provider "virtualbox" do |vb|
     vb.gui = true
@@ -22,7 +22,7 @@ Vagrant.configure("2") do |config|
   end
 
   config.vm.provision "site", type: "ansible_local" do |ansible|
-    ansible.playbook = "ansible/site.yml"
+    ansible.playbook = "playbooks/site.yml"
     ansible.compatibility_mode = "2.0"
   end
 end
