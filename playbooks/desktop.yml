@@ -4,6 +4,7 @@
   roles:
     - desktop
     - fonts
+    - ubuntu-make
     - eclipse-cpp
     - idea
     - pycharm
