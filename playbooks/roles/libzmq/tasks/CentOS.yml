@@ -1,5 +1,11 @@
 ---
 
+- name: add rpm key
+  become: yes
+  rpm_key:
+    state: present
+    key: http://download.opensuse.org/repositories/network:/messaging:/zeromq:/release-stable/CentOS_7/repodata/repomd.xml.key
+
 - name: add yum repository
   become: yes
   yum_repository:
