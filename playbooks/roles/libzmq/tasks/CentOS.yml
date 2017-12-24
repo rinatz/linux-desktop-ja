@@ -1,0 +1,17 @@
+---
+
+- name: add yum repository
+  become: yes
+  yum_repository:
+    name: zeromq
+    description: Latest released versions, no DRAFT apis (CentOS_7)
+    baseurl: http://download.opensuse.org/repositories/network:/messaging:/zeromq:/release-stable/CentOS_7/
+
+- name: install packages
+  become: yes
+  yum:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - libzmq5
+    - libczmq4

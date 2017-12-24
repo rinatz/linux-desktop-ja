@@ -10,7 +10,6 @@
     - cctz
     - clang
     - cppitertools
-    - czmq
     - fmt
     - gdb
     - gflags
@@ -23,6 +22,7 @@
     - libsnappy
     - libxml2-utils
     - libzip
+    - libzmq
     - picojson
     - protobuf
     - ptrace
@@ -31,4 +31,3 @@
     - swig
     - valgrind
     - yaml-cpp
-    - zeromq
