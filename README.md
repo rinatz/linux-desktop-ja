@@ -51,7 +51,7 @@ box イメージは [bento] を使用します。
 
 ## 設定
 
-リポジトリをクローンした後 `Vagrantfile` と `ansible` ディレクトリを適当なところに置いてください。
+リポジトリをクローンした後 `Vagrantfile` と `playbooks` ディレクトリを適当なところに置いてください。
 `$HOME` (Windows であれば `%USERPROFILE%` ) に置くのがおすすめです。
 
     $ cd linux-desktop-ja
