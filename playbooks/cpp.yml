@@ -22,11 +22,13 @@
     - libsnappy
     - libxml2-utils
     - libzip
-    - libzmq
     - picojson
     - protobuf
     - ptrace
     - qt
+    - sodium
+    - zeromq
+    - czmq
     - spdlog
     - swig
     - valgrind
