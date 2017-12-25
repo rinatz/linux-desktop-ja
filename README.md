@@ -30,8 +30,8 @@ Linux の日本語デスクトップ環境を作るための Vagrantfile です�
 リポジトリをクローンした後 `Vagrantfile` と `ansible` ディレクトリを適当なところに置いてください。
 `$HOME` (Windows であれば `%USERPROFILE%` ) に置くのがおすすめです。
 
-    $ git clone https://github.com/rinatz/ubuntu-desktop-ja
-    $ cp -rp ubuntu-desktop-ja/{Vagrantfile,ansible} $HOME
+    $ git clone https://github.com/rinatz/linux-desktop-ja
+    $ cp -rp linux-desktop-ja/{Vagrantfile,playbooks} $HOME
 
 必要に応じて `Vagrantfile` を編集します。
 デフォルトのままでいい場合は何もしてくていいです。
