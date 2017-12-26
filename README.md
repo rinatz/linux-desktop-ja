@@ -6,7 +6,6 @@ Linux の日本語デスクトップ環境を作るための Vagrantfile です�
 
 - [必要なもの](#必要なもの)
 - [クローン](#クローン)
-- [boxイメージの作成](#boxイメージの作成)
 - [設定](#設定)
 - [起動](#起動)
 - [日本語化](#日本語化)
@@ -17,11 +16,9 @@ Linux の日本語デスクトップ環境を作るための Vagrantfile です�
 
 - [VirtualBox]
 - [Vagrant]
-- [Packer] (box イメージを作成しない場合は不要)
 
 [VirtualBox]: https://www.virtualbox.org/
 [Vagrant]: https://www.vagrantup.com/
-[Packer]: https://www.packer.io/
 
 **注意**
 
@@ -31,34 +28,17 @@ Linux の日本語デスクトップ環境を作るための Vagrantfile です�
 
 ## クローン
 
-    $ git clone --recursive https://github.com/rinatz/linux-desktop-ja
-
-## boxイメージの作成
-
-box イメージは [bento] を使用します。
-すでに [Vagrant Cloud] に上がっているイメージを使用する場合は
-この工程はスキップできます。
-ディスクサイズを増やしたいなど、スペックを変えたい場合には必要です。
-スペックの設定は `variables.json` を編集して行います。
-適宜編集したら次のコマンドを実行します。
-
-    $ cd bento/ubuntu
-    $ packer build -only=virtualbox-iso -var-file=../../variables.json ubuntu-14.04-amd64.json
-    $ vagrant box add ../builds/ubuntu-14.04.virtualbox.box
-
-[bento]: https://github.com/chef/bento
-[Vagrant Cloud]: https://app.vagrantup.com/boxes/search
+    $ git clone https://github.com/rinatz/linux-desktop-ja
 
 ## 設定
 
-リポジトリをクローンした後 `Vagrantfile` と `playbooks` ディレクトリを適当なところに置いてください。
+`Vagrantfile` と `playbooks` ディレクトリを適当なところに置いてください。
 `$HOME` (Windows であれば `%USERPROFILE%` ) に置くのがおすすめです。
 
     $ cd linux-desktop-ja
     $ cp -rp Vagrantfile playbooks $HOME
 
 必要に応じて `Vagrantfile` を編集します。
-box イメージを作成した場合は作成した box イメージを指定して下さい。
 デフォルトのままでいい場合は何もしてくていいです。
 
 ## 起動
