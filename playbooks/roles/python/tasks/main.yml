@@ -3,15 +3,15 @@
 - name: install pyenv
   git:
     repo: https://github.com/pyenv/pyenv.git
-    dest: ~/.pyenv
+    dest: "{{ pyenv_root }}"
 
 - name: install python
   shell: "{{ item }}"
   with_items:
-    - pyenv install {{ python_version }}
+    - pyenv install -s {{ python_version }}
     - pyenv global {{ python_version }}
-  vars:
-    python_version: 3.6.4
+    - pip install pipenv
   environment:
-    PYTHON_CONFIGURE_OPTS: "--enable-shared"
-    PATH: "~/.pyenv/bin:{{ ansible_env.PATH }}"
+    CONFIGURE_OPTS: --enable-shared
+    PYENV_ROOT: "{{ pyenv_root }}"
+    PATH: "{{ pyenv_root }}/bin:{{ pyenv_root }}/shims:{{ pyenv_root }}/plugins/python-build/bin:{{ ansible_env.PATH }}"
