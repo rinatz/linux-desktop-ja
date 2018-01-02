@@ -5,6 +5,7 @@
     - bash-completion
     - cifs-utils
     - dotfiles
+    - java
     - jq
     - nkf
     - python
