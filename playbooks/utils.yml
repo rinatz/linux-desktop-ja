@@ -2,10 +2,10 @@
 
 - hosts: all
   roles:
-    - anyenv
     - bash-completion
     - cifs-utils
     - dotfiles
     - jq
     - nkf
+    - python
     - tree
