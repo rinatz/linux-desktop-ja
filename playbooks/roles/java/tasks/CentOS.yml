@@ -1,0 +1,13 @@
+---
+
+- name: install java
+  become: yes
+  yum:
+    name: java-1.8.0-openjdk-devel
+
+- name: update alternatives
+  become: yes
+  alternatives:
+    name: java
+    path: /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.151-5.b12.el7_4.x86_64/jre/bin/java
+    link: /usr/bin/java
