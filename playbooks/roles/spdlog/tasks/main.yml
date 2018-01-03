@@ -1,6 +1,6 @@
 ---
 
-- name: ensure downloaded
+- name: check if downloaded
   stat:
     path: /usr/local/src/spdlog-{{ spdlog_version }}
   register: src_dir

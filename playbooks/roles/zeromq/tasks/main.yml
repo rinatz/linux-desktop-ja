@@ -1,6 +1,6 @@
 ---
 
-- name: ensure download
+- name: check if downloaded
   stat:
     path: /usr/local/src/zeromq-{{ zmq_version }}
   register: src_dir

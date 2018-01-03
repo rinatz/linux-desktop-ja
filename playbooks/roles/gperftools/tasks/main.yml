@@ -1,6 +1,6 @@
 ---
 
-- name: ensure downloaded
+- name: check if downloaded
   stat:
     path: /usr/local/src/gperftools-{{ gperftools_version }}
   register: src_dir
