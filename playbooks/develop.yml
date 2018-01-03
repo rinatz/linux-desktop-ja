@@ -3,5 +3,6 @@
 - hosts: all
   roles:
     - java
+    - node
     - python
     - ruby
