@@ -1,0 +1,7 @@
+---
+
+- name: install doxygen
+  become: yes
+  yum:
+    name: doxygen
+    state: present

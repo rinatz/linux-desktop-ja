@@ -10,6 +10,7 @@
     - cctz
     - clang
     - cppitertools
+    - doxygen
     - fmt
     - gdb
     - gflags
