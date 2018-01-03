@@ -79,4 +79,4 @@ Linux の日本語デスクトップ環境を作るための Vagrantfile です�
 
 [![license](https://img.shields.io/github/license/rinatz/ubuntu-desktop-ja.svg)](LICENSE)
 
-Copyright (c) 2017 Kenichiro IDA
+Copyright (c) 2018 Kenichiro IDA
