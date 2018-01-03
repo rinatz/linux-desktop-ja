@@ -1,0 +1,4 @@
+---
+
+rbenv_root: "{{ ansible_env.HOME }}/.rbenv"
+ruby_version: 2.5.0
