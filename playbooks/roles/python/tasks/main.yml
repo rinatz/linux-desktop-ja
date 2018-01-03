@@ -8,8 +8,8 @@
 - name: install python
   shell: "{{ item }}"
   with_items:
-    - pyenv install -s {{ python_version }}
-    - pyenv global {{ python_version }}
+    - pyenv install -s "{{ python_version }}"
+    - pyenv global "{{ python_version }}"
     - pip install pipenv
   environment:
     CONFIGURE_OPTS: --enable-shared
