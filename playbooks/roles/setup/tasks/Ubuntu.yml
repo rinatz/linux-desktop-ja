@@ -1,5 +1,11 @@
 ---
 
+- name: remove /var/crash/*
+  become: yes
+  file:
+    name: /var/crash/*
+    state: absent
+
 - name: set timezone
   become: yes
   timezone:
