@@ -1,17 +1,18 @@
 ---
 
 - name: install pyenv
-  git:
-    repo: https://github.com/pyenv/pyenv.git
-    dest: "{{ pyenv_root }}"
+  shell: |
+    eval "$(anyenv init -)"
+    anyenv install -s pyenv
+  environment:
+    PATH: "{{ anyenv_root }}/bin:{{ ansible_env.PATH }}"
 
 - name: install python
-  shell: "{{ item }}"
-  with_items:
-    - pyenv install -s {{ python_version }}
-    - pyenv global {{ python_version }}
-    - pip install pipenv
+  shell: |
+    eval "$(anyenv init -)"
+    pyenv install -s {{ python_version }}
+    pyenv global {{ python_version }}
+    pip install pipenv
   environment:
     CONFIGURE_OPTS: --enable-shared
-    PYENV_ROOT: "{{ pyenv_root }}"
-    PATH: "{{ pyenv_root }}/bin:{{ pyenv_root }}/shims:{{ pyenv_root }}/plugins/python-build/bin:{{ ansible_env.PATH }}"
+    PATH: "{{ anyenv_root }}/bin:{{ ansible_env.PATH }}"

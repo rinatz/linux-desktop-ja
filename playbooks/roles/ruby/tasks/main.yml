@@ -1,30 +1,27 @@
 ---
 
 - name: install rbenv
-  git:
-    repo: https://github.com/rbenv/rbenv.git
-    dest: "{{ rbenv_root }}"
+  shell: |
+    eval "$(anyenv init -)"
+    anyenv install -s rbenv
+  environment:
+    PATH: "{{ anyenv_root }}/bin:{{ ansible_env.PATH }}"
 
 - name: compile dynamic bash extension
-  shell: "{{ item }}"
-  with_items:
-    - src/configure
-    - make -C src
-  args:
-    chdir: "{{ rbenv_root }}"
+  shell: |
+    eval "$(anyenv init -)"
+    cd $(rbenv root)
+    src/configure
+    make -C src
   ignore_errors: yes
-
-- name: install ruby-build
-  git:
-    repo: https://github.com/rbenv/ruby-build.git
-    dest: "{{ rbenv_root }}/plugins/ruby-build"
+  environment:
+    PATH: "{{ anyenv_root }}/bin:{{ ansible_env.PATH }}"
 
 - name: install ruby
-  shell: "{{ item }}"
-  with_items:
-    - rbenv install -s {{ ruby_version }}
-    - rbenv global {{ ruby_version }}
-    - gem install bundler
+  shell: |
+    eval "$(anyenv init -)"
+    rbenv install -s {{ ruby_version }}
+    rbenv global {{ ruby_version }}
+    gem install bundler
   environment:
-    RBENV_ROOT: "{{ rbenv_root }}"
-    PATH: "{{ rbenv_root }}/bin:{{ rbenv_root }}/shims:{{ rbenv_root }}/plugins/ruby-build/bin:{{ ansible_env.PATH }}"
+    PATH: "{{ anyenv_root }}/bin:{{ ansible_env.PATH }}"

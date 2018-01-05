@@ -1,4 +1,4 @@
 ---
 
 anyenv_root: "{{ ansible_env.HOME }}/.anyenv"
-node_version: 8.9.4
+java_version: 1.8

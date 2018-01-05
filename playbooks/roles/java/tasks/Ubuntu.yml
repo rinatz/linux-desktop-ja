@@ -13,8 +13,18 @@
     update_cache: yes
     cache_valid_time: 3600
 
-- name: update alternatives
-  become: yes
-  alternatives:
-    name: java
-    path: /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java
+- name: install jenv
+  shell: |
+    eval "$(anyenv init -)"
+    anyenv install -s jenv
+  environment:
+    PATH: "{{ anyenv_root }}/bin:{{ ansible_env.PATH }}"
+
+- name: enable java
+  shell: |
+    eval "$(anyenv init -)"
+    jenv add /usr/lib/jvm/java-7-openjdk-amd64
+    jenv add /usr/lib/jvm/java-8-openjdk-amd64
+    jenv global {{ java_version }}
+  environment:
+    PATH: "{{ anyenv_root }}/bin:{{ ansible_env.PATH }}"

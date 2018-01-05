@@ -5,9 +5,17 @@
   yum:
     name: java-1.8.0-openjdk-devel
 
-- name: update alternatives
-  become: yes
-  alternatives:
-    name: java
-    path: /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.151-5.b12.el7_4.x86_64/jre/bin/java
-    link: /usr/bin/java
+- name: install jenv
+  shell: |
+    eval "$(anyenv init -)"
+    anyenv install -s jenv
+  environment:
+    PATH: "{{ anyenv_root }}/bin:{{ ansible_env.PATH }}"
+
+- name: enable java
+  shell: |
+    eval "$(anyenv init -)"
+    jenv add /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.151-5.b12.el7_4.x86_64
+    jenv global {{ java_version }}
+  environment:
+    PATH: "{{ anyenv_root }}/bin:{{ ansible_env.PATH }}"
