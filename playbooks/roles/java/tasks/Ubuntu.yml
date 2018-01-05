@@ -23,7 +23,6 @@
 - name: enable java
   shell: |
     eval "$(anyenv init -)"
-    jenv add /usr/lib/jvm/java-7-openjdk-amd64
     jenv add /usr/lib/jvm/java-8-openjdk-amd64
     jenv global {{ java_version }}
   environment:
