@@ -15,8 +15,8 @@
   become: yes
   replace:
     dest: /etc/apt/sources.list
-    regexp: 'http://(us\.)?archive\.ubuntu\.com/ubuntu'
-    replace: 'http://ftp.yz.yamagata-u.ac.jp/pub/linux/ubuntu/archives'
+    regexp: 'http://(us\.)?archive\.ubuntu\.com/ubuntu/'
+    replace: 'http://linux.yz.yamagata-u.ac.jp/ubuntu/'
   register: ubuntu_repo
 
 - name: add apt key
