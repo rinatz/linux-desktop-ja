@@ -1,0 +1,7 @@
+---
+
+- name: install packages
+  become: yes
+  yum:
+    name: "@^gnome-desktop-environment"
+    state: present
