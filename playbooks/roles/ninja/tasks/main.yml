@@ -1,3 +1,9 @@
 ---
 
-- include_tasks: "{{ ansible_distribution }}.yml"
+- name: download ninja
+  become: yes
+  unarchive:
+    src: https://github.com/ninja-build/ninja/releases/download/v{{ ninja_version }}/ninja-linux.zip
+    dest: /usr/local/bin
+    remote_src: yes
+    mode: 0755

@@ -16,12 +16,14 @@
 - name: compile and install
   become: yes
   shell: "{{ item }}"
-  args:
-    chdir: /usr/local/src/googletest-release-{{ gtest_version }}
   with_items:
     - cmake -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/local/stow/gtest-{{ gtest_version }} .
-    - /usr/local/bin/ninja
-    - /usr/local/bin/ninja install
+    - ninja
+    - ninja install
+  args:
+    chdir: /usr/local/src/googletest-release-{{ gtest_version }}
+  environment:
+    PATH: /usr/local/bin:{{ ansible_env.PATH }}
 
 - name: stow
   become: yes
