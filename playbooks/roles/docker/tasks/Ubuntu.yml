@@ -12,11 +12,26 @@
     - linux-image-extra-virtual
   when: ansible_distribution_release == "trusty"
 
+#
+# Ansible will emit an error that:
+#
+#   Failed to validate the SSL certificate for download.docker.com:443.
+#   Make sure your managed systems have a valid CA certificate installed.
+#   If the website serving the url uses SNI you need python >= 2.7.9 on your managed machine
+#   or you can install the `urllib3`, `pyOpenSSL`, `ndg-httpsclient`,
+#   and `pyasn1` python modules to perform SNI verification in python >= 2.6.
+#
+# - name: add apt key
+#   become: yes
+#   apt_key:
+#     url: https://download.docker.com/linux/ubuntu/gpg
+#     state: present
+
 - name: add apt key
   become: yes
-  apt_key:
-    url: https://download.docker.com/linux/ubuntu/gpg
-    state: present
+  shell: curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
+  args:
+    warn: no
 
 - name: add apt repository
   become: yes
