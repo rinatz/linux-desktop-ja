@@ -11,6 +11,7 @@
     - autoconf
     - automake
     - bzip2
+    - dpkg-dev
     - file
     - g++-4.8
     - gcc-4.8
@@ -21,6 +22,7 @@
     - libdb-dev
     - libevent-dev
     - libffi-dev
+    - libgdbm-dev
     - libgeoip-dev
     - libglib2.0-dev
     - libjpeg-dev
@@ -29,7 +31,8 @@
     - libmagickcore-dev
     - libmagickwand-dev
     - libmysqlclient-dev
-    - libncurses-dev
+    - libncurses5-dev
+    - libncursesw5-dev
     - libpng-dev
     - libpq-dev
     - libreadline-dev
@@ -44,3 +47,14 @@
     - patch
     - xz-utils
     - zlib1g-dev
+
+- name: install packages
+  become: yes
+  apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: yes
+    cache_valid_time: 3600
+  with_items:
+    - libtool-bin
+  when: ansible_distribution_release in ["xenial"]
