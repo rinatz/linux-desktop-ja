@@ -12,8 +12,8 @@
     - automake
     - bzip2
     - file
-    - g++
-    - gcc
+    - g++-4.8
+    - gcc-4.8
     - imagemagick
     - libbz2-dev
     - libc6-dev
