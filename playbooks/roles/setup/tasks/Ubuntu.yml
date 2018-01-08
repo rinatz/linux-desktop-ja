@@ -31,7 +31,7 @@
 - name: add apt repository
   become: yes
   get_url:
-    url: https://www.ubuntulinux.jp/sources.list.d/trusty.list
+    url: https://www.ubuntulinux.jp/sources.list.d/{{ ansible_distribution_release }}.list
     dest: /etc/apt/sources.list.d/ubuntu-ja.list
   register: ubuntu_ja_repo
 
