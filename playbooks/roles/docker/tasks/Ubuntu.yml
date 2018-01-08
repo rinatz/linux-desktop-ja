@@ -10,7 +10,7 @@
   with_items:
     - linux-image-extra-{{ ansible_kernel }}
     - linux-image-extra-virtual
-  when: ansible_distribution_release == "trusy"
+  when: ansible_distribution_release == "trusty"
 
 - name: add apt key
   become: yes
