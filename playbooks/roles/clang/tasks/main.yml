@@ -1,5 +1,7 @@
 ---
 
+- include_vars: "{{ ansible_distribution }}.yml"
+
 - name: check if downloaded
   stat:
     path: /usr/local/stow/{{ clang }}

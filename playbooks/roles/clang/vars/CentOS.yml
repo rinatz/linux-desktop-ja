@@ -1,0 +1,3 @@
+---
+
+clang: clang+llvm-{{ clang_version }}-x86_64-fedora23
