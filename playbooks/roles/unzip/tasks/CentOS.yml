@@ -1,0 +1,7 @@
+---
+
+- name: install unzip
+  become: yes
+  yum:
+    name: unzip
+    state: present
