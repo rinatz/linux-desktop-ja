@@ -22,7 +22,5 @@ Vagrant.configure("2") do |config|
   config.vm.provision "site", type: "ansible_local" do |ansible|
     ansible.playbook = "playbooks/site.yml"
     ansible.compatibility_mode = "2.0"
-    ansible.install_mode = "pip_args_only"
-    ansible.pip_args = "ansible urllib3 pyOpenSSL ndg-httpsclient pyasn1"
   end
 end
