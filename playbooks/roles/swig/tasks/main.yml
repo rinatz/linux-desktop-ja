@@ -8,7 +8,7 @@
 #
 # FIXME
 #
-#   Failed to validate the SSL certificate for download.docker.com:443.
+#   Failed to validate the SSL certificate for jaist.dl.sourceforge.net:443.
 #   Make sure your managed systems have a valid CA certificate installed.
 #   If the website serving the url uses SNI you need python >= 2.7.9
 #   on your managed machine or you can install
@@ -20,6 +20,7 @@
 #   unarchive:
 #     src: http://prdownloads.sourceforge.net/swig/swig-{{ swig_version }}.tar.gz
 #     dest: /usr/local/src
+#     remote_src: yes
 #   when: not src_dir.stat.exists
 
 - name: download
