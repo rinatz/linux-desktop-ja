@@ -13,14 +13,14 @@
   when: ansible_distribution_release == "trusty"
 
 #
-# 'apt_key' causes an error:
+# FIXME
 #
-# | Failed to validate the SSL certificate for download.docker.com:443.
-# | Make sure your managed systems have a valid CA certificate installed.
-# | If the website serving the url uses SNI you need python >= 2.7.9
-# | on your managed machine or you can install
-# | the `urllib3`, `pyOpenSSL`, `ndg-httpsclient`, and `pyasn1` python modules
-# | to perform SNI verification in python >= 2.6.
+#   Failed to validate the SSL certificate for download.docker.com:443.
+#   Make sure your managed systems have a valid CA certificate installed.
+#   If the website serving the url uses SNI you need python >= 2.7.9
+#   on your managed machine or you can install
+#   the `urllib3`, `pyOpenSSL`, `ndg-httpsclient`, and `pyasn1` python modules
+#   to perform SNI verification in python >= 2.6.
 #
 # - name: add apt key
 #   become: yes
