@@ -7,12 +7,26 @@
     path: /usr/local/stow/{{ clang }}
   register: install_dir
 
+#
+# FIXME
+#
+#   Failure downloading http://llvm.org/releases/{{ clang_version }}/{{ clang }}.tar.xz,
+#   Connection failure: timed out
+#
+# - name: download
+#   become: yes
+#   unarchive:
+#     src: http://llvm.org/releases/{{ clang_version }}/{{ clang }}.tar.xz
+#     dest: /usr/local/stow
+#     remote_src: yes
+#   when: not install_dir.stat.exists
+
 - name: download
   become: yes
-  unarchive:
-    src: http://llvm.org/releases/{{ clang_version }}/{{ clang }}.tar.xz
-    dest: /usr/local/stow
-    remote_src: yes
+  shell: curl -fsSL http://llvm.org/releases/{{ clang_version }}/{{ clang }}.tar.xz | tar Jxv
+  args:
+    chdir: /usr/local/stow
+    warn: no
   when: not install_dir.stat.exists
 
 - name: stow
