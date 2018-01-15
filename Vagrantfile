@@ -19,6 +19,10 @@ Vagrant.configure("2") do |config|
     vb.customize ["modifyvm", :id, "--clipboard", "bidirectional"]
   end
 
+  config.vm.provision "shell", inline: <<-SHELL
+    rm -f /etc/apt/apt.conf.d/10periodic
+  SHELL
+
   config.vm.provision "site", type: "ansible_local" do |ansible|
     ansible.playbook = "playbooks/site.yml"
     ansible.compatibility_mode = "2.0"
