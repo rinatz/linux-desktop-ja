@@ -1,17 +1,12 @@
 ---
 
-- name: check if downloaded
-  stat:
-    path: /usr/local/src/zeromq-{{ zmq_version }}
-  register: src_dir
-
 - name: download
   become: yes
   unarchive:
     src: https://github.com/zeromq/libzmq/releases/download/v{{ zmq_version }}/zeromq-{{ zmq_version }}.tar.gz
     dest: /usr/local/src
     remote_src: yes
-  when: not src_dir.stat.exists
+    creates: /usr/local/src/zeromq-{{ zmq_version }}
 
 - name: compile and install
   become: yes

@@ -1,10 +1,5 @@
 ---
 
-- name: check if downloaded
-  stat:
-    path: /usr/local/src/swig-{{ swig_version }}
-  register: src_dir
-
 #
 # FIXME
 #
@@ -21,7 +16,7 @@
 #     src: http://prdownloads.sourceforge.net/swig/swig-{{ swig_version }}.tar.gz
 #     dest: /usr/local/src
 #     remote_src: yes
-#   when: not src_dir.stat.exists
+#     creates: /usr/local/src/swig-{{ swig_version }}
 
 - name: download
   become: yes
@@ -29,7 +24,7 @@
   args:
     chdir: /usr/local/src
     warn: no
-  when: not src_dir.stat.exists
+    creates: /usr/local/src/swig-{{ swig_version }}
 
 - name: compile and install
   become: yes

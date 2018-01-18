@@ -1,17 +1,12 @@
 ---
 
-- name: check if downloaded
-  stat:
-    path: /usr/local/src/gperftools-{{ gperftools_version }}
-  register: src_dir
-
 - name: download
   become: yes
   unarchive:
     src: https://github.com/gperftools/gperftools/releases/download/gperftools-{{ gperftools_version }}/gperftools-{{ gperftools_version }}.tar.gz
     dest: /usr/local/src
     remote_src: yes
-  when: not src_dir.stat.exists
+    creates: /usr/local/src/gperftools-{{ gperftools_version }}
 
 - name: compile and install
   become: yes

@@ -1,17 +1,12 @@
 ---
 
-- name: check if downloaded
-  stat:
-    path: /usr/local/src/libsodium-{{ sodium_version }}
-  register: src_dir
-
 - name: download
   become: yes
   unarchive:
     src: https://github.com/jedisct1/libsodium/releases/download/{{ sodium_version }}/libsodium-{{ sodium_version }}.tar.gz
     dest: /usr/local/src
     remote_src: yes
-  when: not src_dir.stat.exists
+    creates: /usr/local/src/libsodium-{{ sodium_version }}
 
 - name: compile and install
   become: yes

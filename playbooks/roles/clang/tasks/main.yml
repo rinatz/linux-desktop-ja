@@ -2,11 +2,6 @@
 
 - include_vars: "{{ ansible_distribution }}.yml"
 
-- name: check if downloaded
-  stat:
-    path: /usr/local/stow/{{ clang }}
-  register: install_dir
-
 #
 # FIXME
 #
@@ -19,7 +14,7 @@
 #     src: http://llvm.org/releases/{{ clang_version }}/{{ clang }}.tar.xz
 #     dest: /usr/local/stow
 #     remote_src: yes
-#   when: not install_dir.stat.exists
+#     creates: /usr/local/stow/{{ clang }}
 
 - name: download
   become: yes
@@ -27,7 +22,7 @@
   args:
     chdir: /usr/local/stow
     warn: no
-  when: not install_dir.stat.exists
+    creates: /usr/local/stow/{{ clang }}
 
 - name: stow
   become: yes
