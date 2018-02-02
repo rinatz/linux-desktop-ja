@@ -20,7 +20,9 @@ Vagrant.configure("2") do |config|
   end
 
   config.vm.provision "shell", inline: <<-SHELL
-    [ "$(lsb_release -sc)" == "xenial" ] && rm -f /etc/apt/apt.conf.d/10periodic
+    if [ "$(lsb_release -sc)" == "xenial" ]; then
+      rm -f /etc/apt/apt.conf.d/10periodic
+    fi
   SHELL
 
   config.vm.provision "site", type: "ansible_local" do |ansible|
