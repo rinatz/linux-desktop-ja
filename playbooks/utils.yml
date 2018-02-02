@@ -4,8 +4,10 @@
   roles:
     - bash-completion
     - cifs-utils
+    - dos2unix
     - dotfiles
     - jq
+    - meld
     - nkf
     - tree
     - unzip

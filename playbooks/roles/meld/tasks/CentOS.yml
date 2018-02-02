@@ -1,0 +1,7 @@
+---
+
+- name: install meld
+  become: yes
+  yum:
+    name: meld
+    state: present

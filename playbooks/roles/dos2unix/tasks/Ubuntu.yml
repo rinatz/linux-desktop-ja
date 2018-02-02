@@ -1,0 +1,9 @@
+---
+
+- name: install dos2unix
+  become: yes
+  apt:
+    name: dos2unix
+    state: present
+    update_cache: yes
+    cache_valid_time: 3600

@@ -1,0 +1,7 @@
+---
+
+- name: install dos2unix
+  become: yes
+  yum:
+    name: dos2unix
+    state: present
