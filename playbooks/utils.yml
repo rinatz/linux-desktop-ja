@@ -7,7 +7,6 @@
     - dos2unix
     - dotfiles
     - jq
-    - meld
     - nkf
     - unzip
     - exa
