@@ -6,8 +6,7 @@
     - cifs-utils
     - dos2unix
     - dotfiles
-    - exa
     - jq
-    - meld
     - nkf
     - unzip
+    - exa

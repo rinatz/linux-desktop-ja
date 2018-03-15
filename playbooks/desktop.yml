@@ -4,6 +4,7 @@
   roles:
     - desktop
     - fonts
+    - meld
     - ubuntu-make
     - idea
     - pycharm
