@@ -1,10 +1,6 @@
 ---
 
-- name: ensure visual-studio-code installed
-  stat:
-    path: ~/.local/share/umake/ide/visual-studio-code
-  register: install_dir
-
 - name: install visual-studio-code
   shell: yes a | umake ide visual-studio-code ~/.local/share/umake/ide/visual-studio-code
-  when: not install_dir.stat.exists
+  args:
+    creates: ~/.local/share/umake/ide/visual-studio-code
