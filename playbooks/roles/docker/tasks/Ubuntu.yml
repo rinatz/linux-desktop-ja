@@ -52,3 +52,10 @@
 - name: add user to docker group
   become: yes
   shell: usermod -aG docker "{{ ansible_user_id }}"
+
+- name: start docker service
+  become: yes
+  service:
+    name: docker
+    state: started
+    enabled: yes
