@@ -20,7 +20,6 @@
     name: docker-ce
     state: present
 
-- name: add vagrant user to docker group
+- name: add user to docker group
   become: yes
-  shell: usermod -aG docker vagrant
-  when: ansible_user_id == "vagrant"
+  shell: usermod -aG docker "{{ ansible_user_id }}"
