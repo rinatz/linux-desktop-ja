@@ -4,5 +4,6 @@
 - import_playbook: utils.yml
 - import_playbook: develop.yml
 - import_playbook: web.yml
+- import_playbook: devtoolset.yml
 - import_playbook: cpp.yml
 - import_playbook: desktop.yml

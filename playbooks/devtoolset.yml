@@ -1,0 +1,13 @@
+---
+
+- hosts: all
+  roles:
+    - stow
+    - ccache
+    - cmake
+    - ninja
+    - clang
+    - gdb
+    - gperftools
+    - ptrace
+    - valgrind
