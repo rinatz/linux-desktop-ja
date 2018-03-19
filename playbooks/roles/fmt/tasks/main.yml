@@ -12,13 +12,11 @@
   become: yes
   shell: "{{ item }}"
   with_items:
-    - cmake -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/local/stow/fmt-{{ fmt_version }} .
+    - cmake -G Ninja -DCMAKE_MAKE_PROGRAM=/usr/local/bin/ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/local/stow/fmt-{{ fmt_version }} .
     - ninja
     - ninja install
   args:
     chdir: /usr/local/src/fmt-{{ fmt_version }}
-  environment:
-    PATH: /usr/local/bin:{{ ansible_env.PATH }}
 
 - name: stow
   become: yes
