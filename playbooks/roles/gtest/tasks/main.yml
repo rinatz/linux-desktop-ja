@@ -17,6 +17,8 @@
     - ninja install
   args:
     chdir: /usr/local/src/googletest-release-{{ gtest_version }}
+  environment:
+    PATH: /usr/local/bin:{{ ansible_env.PATH }}
 
 - name: stow
   become: yes

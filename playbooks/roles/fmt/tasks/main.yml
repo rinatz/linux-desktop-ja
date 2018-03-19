@@ -17,6 +17,8 @@
     - ninja install
   args:
     chdir: /usr/local/src/fmt-{{ fmt_version }}
+  environment:
+    PATH: /usr/local/bin:{{ ansible_env.PATH }}
 
 - name: stow
   become: yes
