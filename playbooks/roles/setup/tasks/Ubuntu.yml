@@ -11,6 +11,14 @@
   timezone:
     name: Asia/Tokyo
 
+- name: change /etc/nsswitch.conf
+  become: yes
+  lineinfile:
+    path: /etc/nsswitch.conf
+    regexp: '^(.*) \[NOTFOUND=return\] (.*)$'
+    line: '\1 \2'
+    backrefs: yes
+
 - name: change ubuntu apt repository
   become: yes
   replace:
