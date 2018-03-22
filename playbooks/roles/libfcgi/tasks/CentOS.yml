@@ -1,7 +1,0 @@
----
-
-- name: install packages
-  become: yes
-  yum:
-    name: fcgi-devel
-    state: present
