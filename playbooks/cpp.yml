@@ -11,6 +11,7 @@
     - graphviz
     - gtest
     - kyotocabinet
+    - libfcgi
     - liblz4
     - liblzo2
     - libsnappy
