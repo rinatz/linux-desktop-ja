@@ -4,5 +4,4 @@
   roles:
     - docker
     - docker-compose
-    - nginx
     - fcgi
