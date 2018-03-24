@@ -4,7 +4,6 @@
   become: yes
   apt_repository:
     repo: 'ppa:git-core/ppa'
-  register: git_repo
 
 - name: install packages
   become: yes
@@ -12,11 +11,11 @@
     name: "{{ item }}"
     state: present
     update_cache: yes
+    cache_valid_time: 3600
   with_items:
     - git
     - openssh-client
     - procps
-  when: git_repo is changed
 
 - name: install git-lfs
   become: yes
