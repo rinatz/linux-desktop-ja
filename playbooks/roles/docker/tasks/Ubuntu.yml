@@ -47,7 +47,8 @@
   apt:
     name: docker-ce
     state: present
-    update_cache: "{{ docker_repo|changed }}"
+    update_cache: yes
+  when: docker_repo is changed
 
 - name: add user to docker group
   become: yes
