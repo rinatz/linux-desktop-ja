@@ -25,7 +25,7 @@ Vagrant.configure("2") do |config|
     fi
   SHELL
 
-  config.vm.provision "site", type: "ansible_local" do |ansible|
+  config.vm.provision "ansible_local" do |ansible|
     ansible.playbook = "playbooks/site.yml"
     ansible.compatibility_mode = "2.0"
   end
