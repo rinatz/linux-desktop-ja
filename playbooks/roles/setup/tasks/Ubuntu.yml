@@ -47,4 +47,4 @@
   become: yes
   apt:
     update_cache: yes
-  when: ubuntu_repo|changed or ubuntu_ja_repo|changed
+  when: ubuntu_repo is changed or ubuntu_ja_repo is changed

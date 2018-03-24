@@ -11,11 +11,12 @@
   apt:
     name: "{{ item }}"
     state: present
-    update_cache: "{{ git_repo|changed }}"
+    update_cache: yes
   with_items:
     - git
     - openssh-client
     - procps
+  when: git_repo is changed
 
 - name: install git-lfs
   become: yes
