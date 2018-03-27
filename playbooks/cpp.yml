@@ -14,7 +14,6 @@
     - liblz4
     - liblzo2
     - libsnappy
-    - libxml2-utils
     - libzip
     - picojson
     - protobuf

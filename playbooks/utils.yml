@@ -7,5 +7,6 @@
     - dos2unix
     - dotfiles
     - jq
+    - libxml2-utils
     - nkf
     - unzip
