@@ -19,12 +19,6 @@ Vagrant.configure("2") do |config|
     vb.customize ["modifyvm", :id, "--clipboard", "bidirectional"]
   end
 
-  config.vm.provision "shell", inline: <<-SHELL
-    if [ "$(lsb_release -sc)" == "xenial" ]; then
-      rm -f /etc/apt/apt.conf.d/10periodic
-    fi
-  SHELL
-
   config.vm.provision "ansible_local" do |ansible|
     ansible.playbook = "playbooks/site.yml"
     ansible.compatibility_mode = "2.0"
