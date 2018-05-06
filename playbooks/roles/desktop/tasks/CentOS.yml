@@ -3,7 +3,7 @@
 - name: install packages
   become: yes
   yum:
-    name: "@^gnome-desktop-environment"
+    name: "@^GNOME Desktop"
     state: present
 
 - name: enable GUI
