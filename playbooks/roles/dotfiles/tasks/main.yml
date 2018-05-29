@@ -1,6 +1,0 @@
----
-
-- name: install dotfiles
-  shell: curl -L bit.ly/rinatz-sh | bash
-  args:
-    warn: no

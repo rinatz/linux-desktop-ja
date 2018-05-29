@@ -5,9 +5,11 @@
     - stow
     - ccache
     - cmake
+    - doxygen
     - ninja
     - clang
     - gdb
     - gperftools
+    - graphviz
     - ptrace
     - valgrind

@@ -19,28 +19,18 @@
     line: '\1 \2'
     backrefs: yes
 
-- name: change ubuntu apt repository
+- name: change ubuntu repository url
   become: yes
   replace:
     dest: /etc/apt/sources.list
     regexp: 'http://(.*\.)?archive\.ubuntu\.com/ubuntu/'
-    replace: 'http://linux.yz.yamagata-u.ac.jp/ubuntu/'
+    replace: 'http://jp.archive.ubuntu.com/ubuntu/'
   register: ubuntu_repo
 
-- name: add apt key
+- name: add ubuntu japanese team repository
   become: yes
-  apt_key:
-    url: "{{ item }}"
-    state: present
-  with_items:
-    - https://www.ubuntulinux.jp/ubuntu-ja-archive-keyring.gpg
-    - https://www.ubuntulinux.jp/ubuntu-jp-ppa-keyring.gpg
-
-- name: add apt repository
-  become: yes
-  get_url:
-    url: https://www.ubuntulinux.jp/sources.list.d/{{ ansible_distribution_release }}.list
-    dest: /etc/apt/sources.list.d/ubuntu-ja.list
+  apt_repository:
+    repo: 'ppa:japaneseteam/ppa'
   register: ubuntu_ja_repo
 
 - name: update repositories
