@@ -5,6 +5,7 @@
     - bash-completion
     - cifs-utils
     - dos2unix
+    - dotfiles
     - jq
     - libxml2-utils
     - nkf
