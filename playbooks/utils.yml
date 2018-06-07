@@ -6,6 +6,8 @@
     - cifs-utils
     - dos2unix
     - dotfiles
+    - exa
+    - gron
     - jq
     - libxml2-utils
     - nkf
