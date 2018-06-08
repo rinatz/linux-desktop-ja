@@ -1,0 +1,8 @@
+---
+
+- name: install direnv
+  become: yes
+  get_url:
+    url: https://github.com/direnv/direnv/releases/download/v{{ direnv_version }}/direnv.linux-amd64
+    dest: /usr/local/bin/direnv
+    mode: 0755

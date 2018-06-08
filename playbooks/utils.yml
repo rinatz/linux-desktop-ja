@@ -2,8 +2,10 @@
 
 - hosts: all
   roles:
+    - base16
     - bash-completion
     - cifs-utils
+    - direnv
     - dos2unix
     - dotfiles
     - exa
