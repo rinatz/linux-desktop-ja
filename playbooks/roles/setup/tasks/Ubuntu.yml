@@ -27,14 +27,13 @@
     replace: 'http://jp.archive.ubuntu.com/ubuntu/'
   register: ubuntu_repo
 
-- name: add ubuntu japanese team repository
-  become: yes
-  apt_repository:
-    repo: 'ppa:japaneseteam/ppa'
-  register: ubuntu_ja_repo
-
 - name: update repositories
   become: yes
   apt:
     update_cache: yes
-  when: ubuntu_repo is changed or ubuntu_ja_repo is changed
+  when: ubuntu_repo is changed
+
+- name: add ubuntu japanese team repository
+  become: yes
+  apt_repository:
+    repo: 'ppa:japaneseteam/ppa'
