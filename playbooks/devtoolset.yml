@@ -6,8 +6,8 @@
     - ccache
     - cmake
     - doxygen
+    - llvm
     - ninja
-    - clang
     - gdb
     - gperftools
     - graphviz
