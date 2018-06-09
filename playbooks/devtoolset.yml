@@ -6,6 +6,7 @@
     - ccache
     - cmake
     - doxygen
+    - libunwind
     - llvm
     - ninja
     - gdb
