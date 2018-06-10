@@ -2,18 +2,6 @@
 
 - include_vars: "{{ ansible_distribution }}.yml"
 
-- name: add repository
-  become: yes
-  apt_repository:
-    repo: 'ppa:ubuntu-toolchain-r/test'
-  when: ansible_distribution_release == "trusty"
-
-- name: add repository
-  become: yes
-  apt_repository:
-    repo: "deb http://apt.llvm.org/trusty/ llvm-toolchain-trusty-{{ llvm_version }} main"
-    filename: llvm
-
 #
 # FIXME
 #
@@ -35,6 +23,19 @@
   shell: curl -fsSL https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add -
   args:
     warn: no
+
+- name: add repository
+  become: yes
+  apt_repository:
+    repo: 'ppa:ubuntu-toolchain-r/test'
+  when: ansible_distribution_release == "trusty"
+
+- name: add repository
+  become: yes
+  apt_repository:
+    repo: "deb http://apt.llvm.org/{{ ansible_distribution_release }}/ llvm-toolchain-{{ ansible_distribution_release }}-{{ llvm_version }} main"
+    filename: llvm
+    state: present
 
 - name: install packages
   become: yes
