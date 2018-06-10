@@ -40,7 +40,6 @@
     repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release | regex_replace('bionic', 'xenial') }} stable
     filename: docker
     state: present
-  register: docker_repo
 
 - name: install docker
   become: yes
@@ -48,7 +47,7 @@
     name: docker-ce
     state: present
     update_cache: yes
-  when: docker_repo is changed
+    cache_valid_time: 3600
 
 - name: add user to docker group
   become: yes
