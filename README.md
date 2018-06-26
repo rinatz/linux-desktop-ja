@@ -64,7 +64,7 @@ VirutalBox Guest Addition が古くてたまに起動に失敗することがあ
 
 デスクトップ環境を日本語化するには次のようにします。
 
-1. デスクトップ右上の歯車のアイコンから `System settings...` > `Language Support` を選択
+1. デスクトップ左下のメニューから `System settings` > `Language Support` を選択
 1. 表示されるダイアログで `install` を選択（パスワードは `vagrant`）
 1. `Language` タブで `日本語` を一番上までドラッグし `Apply System-Wide` ボタンを押す
 1. `Regional Formats` で `日本語` を選択し `Apply System-Wide` ボタンを押す
@@ -74,7 +74,7 @@ VirutalBox Guest Addition が古くてたまに起動に失敗することがあ
 
 日本語入力を有効化するためには次のようにします。
 
-1. デスクトップ右上のキーボードのアイコンから `設定` を選択
+1. デスクトップ右下のキーボードのアイコンから `設定` を選択
 1. `入力メソッド` の項目にある `キーボード - 英語(US)` を削除して下記をこの順に追加
 
     - キーボード - 日本語 - 日本語（かな 86）
