@@ -26,6 +26,13 @@ Linux の日本語デスクトップ環境を作るための Vagrantfile です�
     バージョンの組み合わせがシビアで、
     相性が悪いと上手く起動できないことがあるためご注意下さい。
 
+VirutalBox Guest Addition が古くてたまに起動に失敗することがあるため
+[`vagrant-vbguest`] プラグインを入れておくと安全です。
+
+    $ vagrant plugin install vagrant-vbguest
+
+[`vagrant-vbguest`]: https://github.com/dotless-de/vagrant-vbguest
+
 ## クローン
 
     $ git clone https://github.com/rinatz/linux-desktop-ja
