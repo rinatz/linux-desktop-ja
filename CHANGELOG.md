@@ -28,6 +28,7 @@
 
 - CHANGELOG.md を追加
 - Intellij IDEA を追加 (CentOS)
+- PyCharm を追加 (CnetOS)
 - ius-release を yum リポジトリとして追加
 
 ### Changed
