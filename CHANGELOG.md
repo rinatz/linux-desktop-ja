@@ -20,10 +20,23 @@
 - clang のロール名を llvm に変更
 - clang の取得を Ubuntu nightly packages から取得するように変更
 
+## [1.0.1] - 2018/06/26
+
+### Added
+
+- CHANGELOG.md を追加
+- Intellij IDEA を追加 (CentOS)
+- ius-release を yum リポジトリとして追加
+
+### Changed
+
+- CentOS に追加する git のパッケージ名の間違いを修正
+
 ## 1.0.0 - 2017/04/13
 
 ### Added
 
 - 初版作成
 
-[Unreleased]: https://github.com/rinatz/linux-desktop-ja/compare/v1.0.0...HEAD
+[Unreleased]: https://github.com/rinatz/linux-desktop-ja/compare/v1.0.1...HEAD
+[1.0.1]: https://github.com/rinatz/linux-desktop-ja/compare/v1.0.0...v1.0.1
