@@ -3,41 +3,25 @@
 - name: download
   become: yes
   unarchive:
-    src: https://github.com/google/cctz/archive/{{ cctz_version }}.tar.gz
+    src: https://github.com/google/cctz/archive/v{{ cctz_version }}.tar.gz
     dest: /usr/local/src
     remote_src: yes
     creates: /usr/local/src/cctz-{{ cctz_version }}
 
-- name: create directory
+- name: compile and install
   become: yes
-  file:
-    path: "{{ item }}"
-    state: directory
+  shell: "{{ item }}"
   with_items:
-    - /usr/local/stow/cctz-{{ cctz_version }}/include/cctz
-    - /usr/local/stow/cctz-{{ cctz_version }}/lib
-
-- name: compile
-  become: yes
-  shell: make libcctz.a
+    - cmake -G Ninja -DCMAKE_MAKE_PROGRAM=/usr/local/bin/ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/local/stow/cctz-{{ cctz_version }} -DCMAKE_POSITION_INDEPENDENT_CODE=ON -DBUILD_TESTING=OFF .
+    - ninja
+    - mkdir -p /usr/local/stow/cctz-{{ cctz_version }}/lib
+    - cp -rp include /usr/local/stow/cctz-{{ cctz_version }}
+    - cp -rp libcctz.a /usr/local/stow/cctz-{{ cctz_version }}/lib
   args:
     chdir: /usr/local/src/cctz-{{ cctz_version }}
-
-- name: copy headers
-  become: yes
-  copy:
-    src: "{{ item }}"
-    dest: /usr/local/stow/cctz-{{ cctz_version }}/include/cctz
-    remote_src: yes
-  with_fileglob:
-    - /usr/local/src/cctz-{{ cctz_version }}/include/*
-
-- name: copy libs
-  become: yes
-  copy:
-    src: /usr/local/src/cctz-{{ cctz_version }}/libcctz.a
-    dest: /usr/local/stow/cctz-{{ cctz_version }}/lib
-    remote_src: yes
+    warn: no
+  environment:
+    PATH: /usr/local/bin:{{ ansible_env.PATH }}
 
 - name: stow
   become: yes

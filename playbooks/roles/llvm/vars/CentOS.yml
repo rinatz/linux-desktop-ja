@@ -1,0 +1,4 @@
+---
+
+llvm_version: "{{ llvm_major_version }}.{{ llvm_minor_version }}.{{ llvm_patch_version }}"
+llvm_filename: "clang+llvm-{{ llvm_version }}-x86_64-linux-gnu-Fedora27"

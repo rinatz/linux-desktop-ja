@@ -3,9 +3,13 @@
 - hosts: all
   roles:
     - bash-completion
+    - bat
     - cifs-utils
+    - direnv
     - dos2unix
     - dotfiles
+    - exa
+    - gron
     - jq
     - libxml2-utils
     - nkf

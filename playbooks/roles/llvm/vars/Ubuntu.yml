@@ -1,0 +1,3 @@
+---
+
+llvm_version: "{{ llvm_major_version }}.{{ llvm_minor_version }}"

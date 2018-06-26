@@ -1,0 +1,10 @@
+---
+
+- name: install gron
+  become: yes
+  unarchive:
+    src: https://github.com/tomnomnom/gron/releases/download/v{{ gron_version }}/gron-linux-amd64-{{ gron_version }}.tgz
+    dest: /usr/local/bin
+    remote_src: yes
+    mode: 0755
+  when: ansible_distribution == "Ubuntu"

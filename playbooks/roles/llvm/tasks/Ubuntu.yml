@@ -1,0 +1,66 @@
+---
+
+- include_vars: "{{ ansible_distribution }}.yml"
+
+#
+# FIXME
+#
+#   Failed to validate the SSL certificate for download.docker.com:443.
+#   Make sure your managed systems have a valid CA certificate installed.
+#   If the website serving the url uses SNI you need python >= 2.7.9
+#   on your managed machine or you can install
+#   the `urllib3`, `pyOpenSSL`, `ndg-httpsclient`, and `pyasn1` python modules
+#   to perform SNI verification in python >= 2.6.
+#
+# - name: add apt key
+#   become: yes
+#   apt_key:
+#     url: https://apt.llvm.org/llvm-snapshot.gpg.key
+#     state: present
+
+- name: add apt key
+  become: yes
+  shell: curl -fsSL https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add -
+  args:
+    warn: no
+
+- name: add repository
+  become: yes
+  apt_repository:
+    repo: 'ppa:ubuntu-toolchain-r/test'
+  when: ansible_distribution_release == "trusty"
+
+- name: add repository
+  become: yes
+  apt_repository:
+    repo: "deb http://apt.llvm.org/{{ ansible_distribution_release }}/ llvm-toolchain-{{ ansible_distribution_release }}-{{ llvm_version }} main"
+    filename: llvm
+    state: present
+
+- name: install packages
+  become: yes
+  apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: yes
+    cache_valid_time: 3600
+  with_items:
+    - clang-{{ llvm_version }}
+    - clang-format-{{ llvm_version }}
+
+- name: update alternatives
+  become: yes
+  alternatives:
+    name: "{{ item.name }}"
+    link: "{{ item.link }}"
+    path: "{{ item.path }}"
+  with_items:
+    - name: clang
+      link: /usr/bin/clang
+      path: /usr/bin/clang-{{ llvm_version }}
+    - name: clang++
+      link: /usr/bin/clang++
+      path: /usr/bin/clang++-{{ llvm_version }}
+    - name: clang-format
+      link: /usr/bin/clang-format
+      path: /usr/bin/clang-format-{{ llvm_version }}

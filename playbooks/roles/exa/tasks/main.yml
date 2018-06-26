@@ -1,0 +1,17 @@
+---
+
+- block:
+  - name: install exa
+    become: yes
+    unarchive:
+      src: https://github.com/ogham/exa/releases/download/v{{ exa_version }}/exa-linux-x86_64-{{ exa_version }}.zip
+      dest: /usr/local/bin
+      remote_src: yes
+      mode: 0755
+
+  - name: change filename
+    become: yes
+    shell: mv exa-linux-x86_64 exa
+    args:
+      chdir: /usr/local/bin
+  when: ansible_distribution == "Ubuntu"
