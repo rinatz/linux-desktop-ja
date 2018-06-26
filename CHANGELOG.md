@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## [1.2.0]
+
 ### Added
 
 - guake を追加
@@ -38,5 +40,6 @@
 
 - 初版作成
 
-[Unreleased]: https://github.com/rinatz/linux-desktop-ja/compare/v1.0.1...HEAD
+[Unreleased]: https://github.com/rinatz/linux-desktop-ja/compare/v1.2.0...HEAD
+[1.2.0]: https://github.com/rinatz/linux-desktop-ja/compare/v1.0.1...v1.2.0
 [1.0.1]: https://github.com/rinatz/linux-desktop-ja/compare/v1.0.0...v1.0.1
