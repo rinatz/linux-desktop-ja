@@ -2,7 +2,7 @@
 
 ## [Unreleased]
 
-## [1.2.1]
+## [2.0.1]
 
 ## Added
 
@@ -11,7 +11,7 @@
 - パッケージのアップグレード処理を追加
 - C:\ ドライブを /mnt/c にマウントするようにした
 
-## [1.2.0]
+## [2.0.0]
 
 ### Added
 
@@ -50,7 +50,7 @@
 
 - 初版作成
 
-[Unreleased]: https://github.com/rinatz/linux-desktop-ja/compare/v1.2.1...HEAD
-[1.2.1]: https://github.com/rinatz/linux-desktop-ja/compare/v1.2.0...v1.2.1
-[1.2.0]: https://github.com/rinatz/linux-desktop-ja/compare/v1.0.1...v1.2.0
+[Unreleased]: https://github.com/rinatz/linux-desktop-ja/compare/v2.0.1...HEAD
+[2.0.1]: https://github.com/rinatz/linux-desktop-ja/compare/v2.0.0...v2.0.1
+[2.0.0]: https://github.com/rinatz/linux-desktop-ja/compare/v1.0.1...v2.0.0
 [1.0.1]: https://github.com/rinatz/linux-desktop-ja/compare/v1.0.0...v1.0.1
