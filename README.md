@@ -39,7 +39,6 @@ VirutalBox Guest Addition が古くてたまに起動に失敗することがあ
 
 ## 設定
 
-`Vagrantfile` と `playbooks` ディレクトリを適当なところに置いてください。
 必要に応じて `Vagrantfile` を編集します。
 デフォルトのままでいい場合は何もしてくていいです。
 
