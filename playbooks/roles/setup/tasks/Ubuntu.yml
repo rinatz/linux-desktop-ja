@@ -37,3 +37,14 @@
   become: yes
   apt_repository:
     repo: 'ppa:japaneseteam/ppa'
+
+- name: install aptitude
+  become: yes
+  apt:
+    name: aptitude
+    update_cache: yes
+
+- name: upgrade all packages
+  become: yes
+  apt:
+    upgrade: yes
