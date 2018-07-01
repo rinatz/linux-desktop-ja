@@ -2,7 +2,7 @@
 
 ## [Unreleased]
 
-## [2.0.1]
+## [v2.0.1] - 2018/07/02
 
 ## Added
 
@@ -11,7 +11,7 @@
 - パッケージのアップグレード処理を追加
 - C:\ ドライブを /mnt/c にマウントするようにした
 
-## [2.0.0]
+## [v2.0.0] - 2018/06/27
 
 ### Added
 
@@ -31,7 +31,7 @@
 - clang のロール名を llvm に変更
 - clang の取得を Ubuntu nightly packages から取得するように変更
 
-## [1.0.1] - 2018/06/26
+## [v1.0.1] - 2018/06/26
 
 ### Added
 
@@ -44,13 +44,13 @@
 
 - CentOS に追加する git のパッケージ名の間違いを修正
 
-## 1.0.0 - 2017/04/13
+## v1.0.0 - 2017/04/13
 
 ### Added
 
 - 初版作成
 
 [Unreleased]: https://github.com/rinatz/linux-desktop-ja/compare/v2.0.1...HEAD
-[2.0.1]: https://github.com/rinatz/linux-desktop-ja/compare/v2.0.0...v2.0.1
-[2.0.0]: https://github.com/rinatz/linux-desktop-ja/compare/v1.0.1...v2.0.0
-[1.0.1]: https://github.com/rinatz/linux-desktop-ja/compare/v1.0.0...v1.0.1
+[v2.0.1]: https://github.com/rinatz/linux-desktop-ja/compare/v2.0.0...v2.0.1
+[v2.0.0]: https://github.com/rinatz/linux-desktop-ja/compare/v1.0.1...v2.0.0
+[v1.0.1]: https://github.com/rinatz/linux-desktop-ja/compare/v1.0.0...v1.0.1
