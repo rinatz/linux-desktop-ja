@@ -9,4 +9,4 @@
     cache_valid_time: 3600
   with_items:
     - lubuntu-desktop
-    - ubuntu-defaults-ja
+    - fcitx-mozc
