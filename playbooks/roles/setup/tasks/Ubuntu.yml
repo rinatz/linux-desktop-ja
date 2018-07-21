@@ -25,26 +25,13 @@
     dest: /etc/apt/sources.list
     regexp: 'http://(.*\.)?archive\.ubuntu\.com/ubuntu/'
     replace: 'http://jp.archive.ubuntu.com/ubuntu/'
-  register: ubuntu_repo
-
-- name: update repositories
-  become: yes
-  apt:
-    update_cache: yes
-  when: ubuntu_repo is changed
 
 - name: add ubuntu japanese team repository
   become: yes
   apt_repository:
     repo: 'ppa:japaneseteam/ppa'
 
-- name: install aptitude
+- name: update repositories
   become: yes
   apt:
-    name: aptitude
     update_cache: yes
-
-- name: upgrade all packages
-  become: yes
-  apt:
-    upgrade: yes
