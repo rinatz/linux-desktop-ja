@@ -13,14 +13,14 @@
 # - name: download
 #   become: yes
 #   unarchive:
-#     src: https://jaist.dl.sourceforge.net/project/swig/swig/swig-{{ swig_version }}/swig-{{ swig_version }}.tar.gz
+#     src: http://prdownloads.sourceforge.net/swig/swig-{{ swig_version }}.tar.gz
 #     dest: /usr/local/src
 #     remote_src: yes
 #     creates: /usr/local/src/swig-{{ swig_version }}
 
 - name: download
   become: yes
-  shell: curl -fsSL https://jaist.dl.sourceforge.net/project/swig/swig/swig-{{ swig_version }}/swig-{{ swig_version }}.tar.gz | tar zxv
+  shell: curl -fsSL http://prdownloads.sourceforge.net/swig/swig-{{ swig_version }}.tar.gz | tar zxv
   args:
     chdir: /usr/local/src
     warn: no
