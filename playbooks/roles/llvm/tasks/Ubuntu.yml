@@ -47,6 +47,7 @@
   with_items:
     - clang-{{ llvm_version }}
     - clang-format-{{ llvm_version }}
+    - lldb-{{ llvm_version }}
 
 - name: update alternatives
   become: yes
@@ -64,3 +65,6 @@
     - name: clang-format
       link: /usr/bin/clang-format
       path: /usr/bin/clang-format-{{ llvm_version }}
+    - name: lldb
+      link: /usr/bin/lldb
+      path: /usr/bin/lldb-{{ llvm_version }}
