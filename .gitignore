@@ -13,3 +13,15 @@
 *.retry
 
 # End of https://www.gitignore.io/api/ansible
+
+# Created by https://www.gitignore.io/api/packer
+
+### Packer ###
+# Cache objects
+packer_cache/
+
+# For built boxes
+*.box
+
+
+# End of https://www.gitignore.io/api/packer
