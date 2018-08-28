@@ -1,0 +1,36 @@
+{
+    "builders": [
+        {
+            "type": "virtualbox-iso",
+            "guest_os_type": "Ubuntu_64",
+            "iso_url": "http://cdimage.ubuntu.com/lubuntu/releases/14.04.5/release/lubuntu-14.04.5-desktop-amd64.iso",
+            "iso_checksum": "b37dfa5fff7c668a95f1bb82ac4453a0",
+            "iso_checksum_type": "md5",
+            "ssh_username": "vagrant",
+            "ssh_password": "vagrant",
+            "shutdown_command": "echo 'vagrant' | sudo -S shutdown -P now",
+            "disk_size": 512000,
+            "ssh_wait_timeout": "1h",
+            "virtualbox_version_file": ""
+        }
+    ],
+    "provisioners": [
+        {
+            "type": "shell",
+            "execute_command": "echo 'vagrant' | sudo -S '{{ .Path }}'",
+            "script": "provision.sh"
+        },
+        {
+            "type": "ansible-local",
+            "playbook_file": "../playbooks/site.yml",
+            "playbook_dir": "../playbooks"
+        }
+    ],
+    "post-processors": [
+        {
+            "output": "../output/lubuntu-14.04-desktop-ja.box",
+            "type": "vagrant",
+            "vagrantfile_template": "Vagrantfile"
+        }
+    ]
+}
