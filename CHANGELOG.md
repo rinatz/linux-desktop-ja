@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+### Added
+
+- Packer で box イメージを作成できるようにした
+
 ## [v2.0.2] - 2018/07/05
 
 ### Added
