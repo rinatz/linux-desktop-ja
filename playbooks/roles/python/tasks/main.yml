@@ -1,5 +1,13 @@
 ---
 
+- name: install tk-dev
+  become: yes
+  apt:
+    name: tk-dev
+    state: present
+    update_cache: yes
+    cache_valid_time: 3600
+
 - name: install pyenv
   shell: |
     eval "$(anyenv init -)"
