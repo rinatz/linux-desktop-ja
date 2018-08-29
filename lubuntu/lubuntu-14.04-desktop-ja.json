@@ -11,7 +11,11 @@
             "shutdown_command": "echo 'vagrant' | sudo -S shutdown -P now",
             "disk_size": 512000,
             "ssh_wait_timeout": "1h",
-            "virtualbox_version_file": ""
+            "virtualbox_version_file": "",
+            "vboxmanage": [
+                [ "modifyvm", "{{ .Name }}", "--memory", "4096" ],
+                [ "modifyvm", "{{ .Name }}", "--cpus", "2" ]
+            ]
         }
     ],
     "provisioners": [
