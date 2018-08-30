@@ -11,22 +11,13 @@ function sshd() {
 
 function update() {
   sed -i 's,jp.archive.ubuntu.com,ubuntutym.u-toyama.ac.jp,g' /etc/apt/sources.list
-
   apt-get update
-  apt-get install -y curl software-properties-common
-  apt-get install -y linux-headers-$(uname -r) build-essential dkms
-
-  add-apt-repository -y ppa:japaneseteam/ppa
-  add-apt-repository -y ppa:ansible/ansible
-
-  apt-get update
-  apt-get install -y fcitx-mozc ansible
+  apt-get install -y curl linux-headers-$(uname -r) build-essential dkms
 }
 
 function vagrant() {
   mkdir -p /home/vagrant/.ssh
   curl -fsSL "https://raw.githubusercontent.com/mitchellh/vagrant/master/keys/vagrant.pub" > /home/vagrant/.ssh/authorized_keys
-
   chmod 700 /home/vagrant/.ssh
   chmod 600 /home/vagrant/.ssh/authorized_keys
   chown -R vagrant /home/vagrant/.ssh

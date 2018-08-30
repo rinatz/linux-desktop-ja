@@ -23,11 +23,6 @@
             "type": "shell",
             "execute_command": "echo 'vagrant' | sudo -S '{{ .Path }}'",
             "script": "provision.sh"
-        },
-        {
-            "type": "ansible-local",
-            "playbook_file": "../playbooks/site.yml",
-            "playbook_dir": "../playbooks"
         }
     ],
     "post-processors": [
