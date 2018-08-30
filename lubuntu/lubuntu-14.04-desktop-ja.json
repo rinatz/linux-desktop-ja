@@ -13,8 +13,8 @@
             "ssh_wait_timeout": "1h",
             "virtualbox_version_file": "",
             "vboxmanage": [
-                ["modifyvm", "{{ .Name }}", "--memory", "4096"],
-                ["modifyvm", "{{ .Name }}", "--cpus", "2"]
+                [ "modifyvm", "{{ .Name }}", "--memory", "4096" ],
+                [ "modifyvm", "{{ .Name }}", "--cpus", "2" ]
             ]
         }
     ],
