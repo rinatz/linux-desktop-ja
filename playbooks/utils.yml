@@ -1,6 +1,8 @@
 ---
 
 - hosts: all
+  environment:
+    CCACHE_DISABLE: 1
   roles:
     - unzip
     - bash-completion
