@@ -1,0 +1,25 @@
+---
+
+- name: create temporary directory
+  tempfile:
+    state: directory
+  register: temp
+
+- name: download
+  unarchive:
+    src: "https://github.com/motemen/ghq/releases/download/v{{ ghq_version }}/ghq_linux_amd64.zip"
+    dest: "{{ temp.path }}"
+    remote_src: yes
+
+- name: copy
+  become: yes
+  copy:
+    src: "{{ temp.path }}/ghq"
+    dest: /usr/local/bin
+    mode: +x
+    remote_src: yes
+
+- name: remove temporary directory
+  file:
+    path: "{{ temp.path }}"
+    state: absent

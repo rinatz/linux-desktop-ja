@@ -10,7 +10,9 @@
     - dos2unix
     - dotfiles
     - exa
+    - ghq
     - gron
     - jq
     - libxml2-utils
     - nkf
+    - peco

@@ -1,0 +1,25 @@
+---
+
+- name: create temporary directory
+  tempfile:
+    state: directory
+  register: temp
+
+- name: download
+  unarchive:
+    src: "https://github.com/peco/peco/releases/download/v{{ peco_version }}/peco_linux_amd64.tar.gz"
+    dest: "{{ temp.path }}"
+    remote_src: yes
+
+- name: copy
+  become: yes
+  copy:
+    src: "{{ temp.path }}/peco_linux_amd64/peco"
+    dest: /usr/local/bin
+    mode: +x
+    remote_src: yes
+
+- name: remove temporary directory
+  file:
+    path: "{{ temp.path }}"
+    state: absent
