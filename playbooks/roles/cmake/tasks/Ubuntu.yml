@@ -3,7 +3,7 @@
 - name: install cmake
   become: yes
   apt:
-    name: cmake
+    name: cmake3
     state: present
     update_cache: yes
     cache_valid_time: 3600
