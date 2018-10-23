@@ -5,6 +5,7 @@
     - boost
     - cctz
     - cppitertools
+    - docopt
     - fmt
     - gflags
     - gtest
