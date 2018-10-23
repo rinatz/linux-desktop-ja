@@ -3,5 +3,5 @@
 - name: install cmake
   become: yes
   yum:
-    name: cmake
+    name: cmake3
     state: present
