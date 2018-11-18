@@ -8,6 +8,7 @@
 - ghq を追加
 - peco を追加
 - docopt を追加
+- osquery を追加
 
 ### Changed
 

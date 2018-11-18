@@ -7,6 +7,12 @@
 
 - name: add yum repository
   become: yes
-  shell: curl -fsSL https://setup.ius.io/ | bash
-  args:
-    warn: no
+  yum:
+    name: https://centos7.iuscommunity.org/ius-release.rpm
+    state: present
+
+- name: install packages
+  become: yes
+  yum:
+    name: yum-utils
+    state: present
