@@ -3,7 +3,7 @@
 - name: add apt key
   become: yes
   apt_key:
-    keyserver: keyserver.ubuntu.com
+    keyserver: hkp://keyserver.ubuntu.com:80
     id: 1484120AC4E9F8A1A577AEEE97A80C63C9D8B80B
 
 - name: add apt respository

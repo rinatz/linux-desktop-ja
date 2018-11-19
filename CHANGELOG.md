@@ -2,6 +2,12 @@
 
 ## [Unreleased]
 
+## [v2.1.1]
+
+### Changed
+
+- apt_key に渡す keyserver にスキームとポート番号を指定する
+
 ## [v2.1.0]
 
 ### Added
@@ -74,7 +80,8 @@
 
 - 初版作成
 
-[Unreleased]: https://github.com/rinatz/linux-desktop-ja/compare/v2.1.0...HEAD
+[Unreleased]: https://github.com/rinatz/linux-desktop-ja/compare/v2.1.1...HEAD
+[v2.1.1]: https://github.com/rinatz/linux-desktop-ja/compare/v2.1.0...v2.1.1
 [v2.1.0]: https://github.com/rinatz/linux-desktop-ja/compare/v2.0.2...v2.1.0
 [v2.0.2]: https://github.com/rinatz/linux-desktop-ja/compare/v2.0.1...v2.0.2
 [v2.0.1]: https://github.com/rinatz/linux-desktop-ja/compare/v2.0.0...v2.0.1
