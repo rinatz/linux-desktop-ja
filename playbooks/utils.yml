@@ -15,5 +15,4 @@
     - jq
     - libxml2-utils
     - nkf
-    - setup
     - osquery
