@@ -23,11 +23,21 @@
             "type": "shell",
             "execute_command": "echo 'vagrant' | sudo -S '{{ .Path }}'",
             "script": "provision.sh"
+        },
+        {
+            "type": "shell",
+            "execute_command": "echo 'vagrant' | sudo -S '{{ .Path }}'",
+            "script": "ansible.sh"
+        },
+        {
+            "type": "ansible-local",
+            "playbook_dir": "../playbooks",
+            "playbook_file": "../playbooks/site.yml"
         }
     ],
     "post-processors": [
         {
-            "output": "../output/lubuntu-14.04-desktop-ja.box",
+            "output": "../builds/lubuntu-14.04-desktop-ja.box",
             "type": "vagrant",
             "vagrantfile_template": "Vagrantfile"
         }

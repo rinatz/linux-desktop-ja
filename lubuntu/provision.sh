@@ -1,18 +1,24 @@
 #!/bin/bash
 set -eux
 
+function update() {
+  sed -i 's,jp.archive.ubuntu.com,ubuntutym.u-toyama.ac.jp,g' /etc/apt/sources.list
+
+  apt-get update
+  apt-get -y upgrade
+  apt-get install -y curl linux-headers-$(uname -r) build-essential dkms openssh-server software-properties-common
+
+  add-apt-repository -y ppa:ansible/ansible
+  apt-get update
+  apt-get install -y ansible
+}
+
 function sudoers() {
   echo "vagrant ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/vagrant
 }
 
 function sshd() {
   echo "UseDNS no" >> /etc/ssh/sshd_config
-}
-
-function update() {
-  sed -i 's,jp.archive.ubuntu.com,ubuntutym.u-toyama.ac.jp,g' /etc/apt/sources.list
-  apt-get update
-  apt-get install -y curl linux-headers-$(uname -r) build-essential dkms
 }
 
 function vagrant() {
@@ -33,9 +39,9 @@ function virtualbox() {
 }
 
 function main() {
+  update
   sudoers
   sshd
-  update
   vagrant
   virtualbox
 }
