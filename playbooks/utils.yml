@@ -16,3 +16,4 @@
     - libxml2-utils
     - nkf
     - osquery
+    - peco
