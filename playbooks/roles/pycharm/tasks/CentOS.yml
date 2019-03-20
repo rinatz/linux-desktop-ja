@@ -1,8 +1,0 @@
----
-
-- name: download pycharm
-  become: yes
-  unarchive:
-    src: https://download.jetbrains.com/python/pycharm-community-2018.1.2.tar.gz
-    dest: /opt
-    remote_src: yes

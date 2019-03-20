@@ -1,7 +1,0 @@
----
-
-- name: install lz4-devel
-  become: yes
-  yum:
-    name: lz4-devel
-    state: present

@@ -8,3 +8,5 @@
     remote_src: yes
     mode: 0755
   when: ansible_distribution == "Ubuntu"
+  tags:
+    - gron

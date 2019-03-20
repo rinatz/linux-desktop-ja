@@ -1,9 +1,0 @@
----
-
-- name: install package
-  become: yes
-  apt:
-    name: libunwind8-dev
-    state: present
-    update_cache: yes
-    cache_valid_time: 3600

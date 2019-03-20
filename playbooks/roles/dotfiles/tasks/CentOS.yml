@@ -1,0 +1,17 @@
+---
+
+- name: install bash-completion
+  become: yes
+  yum:
+    state: present
+    name:
+      - bash-completion
+  tags:
+    - dotfiles
+
+- name: install dotfiles
+  shell: curl -L http://bit.ly/rinatz-dotfiles | bash
+  args:
+    warn: no
+  tags:
+    - dotfiles

@@ -1,0 +1,8 @@
+---
+
+- name: install rustup
+  shell: curl -fsSL https://sh.rustup.rs | bash -s -- -y
+  args:
+    warn: no
+  tags:
+    - rust

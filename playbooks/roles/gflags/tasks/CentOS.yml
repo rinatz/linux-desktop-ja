@@ -1,7 +1,0 @@
----
-
-- name: install gflags
-  become: yes
-  yum:
-    name: gflags-devel
-    state: present

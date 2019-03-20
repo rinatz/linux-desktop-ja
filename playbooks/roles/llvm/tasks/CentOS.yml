@@ -1,31 +1,9 @@
 ---
 
-- include_vars: "{{ ansible_distribution }}.yml"
-
-#
-# FIXME
-#
-#   Failure downloading http://llvm.org/releases/{{ llvm_version }}/{{ llvm_filename }}.tar.xz,
-#   Connection failure: timed out
-#
-# - name: download
-#   become: yes
-#   unarchive:
-#     src: http://llvm.org/releases/{{ llvm_version }}/{{ llvm_filename }}.tar.xz
-#     dest: /usr/local/stow
-#     remote_src: yes
-#     creates: /usr/local/stow/{{ llvm_filename }}
-
-- name: download
-  become: yes
-  shell: curl -fsSL http://llvm.org/releases/{{ llvm_version }}/{{ llvm_filename }}.tar.xz | tar Jxv
-  args:
-    chdir: /usr/local/stow
-    warn: no
-    creates: /usr/local/stow/{{ llvm_filename }}
-
-- name: stow
-  become: yes
-  shell: stow -R {{ llvm_filename }}
-  args:
-    chdir: /usr/local/stow
+- name: install packages
+  yum:
+    state: present
+    name:
+      - llvm-toolset-7
+  tags:
+    - llvm

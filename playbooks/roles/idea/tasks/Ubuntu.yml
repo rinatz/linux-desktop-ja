@@ -1,6 +1,0 @@
----
-
-- name: install idea
-  shell: umake ide idea ~/.local/share/umake/ide/idea
-  args:
-    creates: ~/.local/share/umake/ide/idea

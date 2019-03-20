@@ -4,21 +4,26 @@
   become: yes
   apt_repository:
     repo: 'ppa:git-core/ppa'
+  tags:
+    - scm
 
 - name: install packages
   become: yes
   apt:
-    name: "{{ item }}"
     state: present
     update_cache: yes
     cache_valid_time: 3600
-  with_items:
-    - git
-    - openssh-client
-    - procps
+    name:
+      - git
+      - openssh-client
+      - procps
+  tags:
+    - scm
 
 - name: install git-lfs
   become: yes
   shell: curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | bash
   args:
     warn: no
+  tags:
+    - scm

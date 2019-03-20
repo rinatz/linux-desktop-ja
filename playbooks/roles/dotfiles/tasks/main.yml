@@ -1,6 +1,5 @@
 ---
 
-- name: install dotfiles
-  shell: curl https://raw.githubusercontent.com/rinatz/dotfiles/master/get-dotfiles.sh | bash
-  args:
-    warn: no
+- include_tasks: "{{ ansible_distribution }}.yml"
+  tags:
+    - dotfiles

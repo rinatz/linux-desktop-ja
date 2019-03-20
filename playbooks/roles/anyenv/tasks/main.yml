@@ -4,3 +4,16 @@
   git:
     repo: https://github.com/riywo/anyenv
     dest: "{{ anyenv_root }}"
+  tags:
+    - anyenv
+
+- name: initialize
+  shell: |
+    eval "$(anyenv init -)"
+    anyenv install --force-init
+  args:
+    creates: "{{ ansible_env.HOME }}/.config/anyenv/anyenv-install"
+  environment:
+    PATH: "{{ anyenv_root }}/bin:{{ ansible_env.PATH }}"
+  tags:
+    - anyenv

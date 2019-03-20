@@ -4,20 +4,21 @@
   become: yes
   timezone:
     name: Asia/Tokyo
+  tags:
+    - setup
 
 - name: change ubuntu repository url
   become: yes
   replace:
     dest: /etc/apt/sources.list
     regexp: 'http://(.*\.)?archive\.ubuntu\.com/ubuntu/'
-    replace: 'http://ubuntutym.u-toyama.ac.jp/ubuntu/'
-
-- name: add ubuntu japanese team repository
-  become: yes
-  apt_repository:
-    repo: 'ppa:japaneseteam/ppa'
+    replace: 'http://jp.archive.ubuntu.com/ubuntu/'
+  tags:
+    - setup
 
 - name: update repositories
   become: yes
   apt:
     update_cache: yes
+  tags:
+    - setup

@@ -1,3 +1,5 @@
 ---
 
 - include_tasks: "{{ ansible_distribution }}.yml"
+  tags:
+    - osquery

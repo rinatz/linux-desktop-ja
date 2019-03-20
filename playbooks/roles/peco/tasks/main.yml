@@ -4,12 +4,16 @@
   tempfile:
     state: directory
   register: temp
+  tags:
+    - peco
 
 - name: download
   unarchive:
     src: "https://github.com/peco/peco/releases/download/v{{ peco_version }}/peco_linux_amd64.tar.gz"
     dest: "{{ temp.path }}"
     remote_src: yes
+  tags:
+    - peco
 
 - name: copy
   become: yes
@@ -18,8 +22,12 @@
     dest: /usr/local/bin
     mode: +x
     remote_src: yes
+  tags:
+    - peco
 
 - name: remove temporary directory
   file:
     path: "{{ temp.path }}"
     state: absent
+  tags:
+    - peco

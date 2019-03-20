@@ -1,0 +1,18 @@
+---
+
+- hosts: all
+  roles:
+    - bat
+    - cifs-utils
+    - direnv
+    - dos2unix
+    - exa
+    - ghq
+    - graphviz
+    - gron
+    - jq
+    - libxml
+    - nkf
+    - osquery
+    - peco
+    - stow

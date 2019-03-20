@@ -1,17 +1,22 @@
 ---
 
-- name: add apt repository
-  become: yes
-  apt_repository:
-    repo: ppa:openjdk-r/ppa
-
-- name: install packages
+- name: install java-common
   become: yes
   apt:
-    name: openjdk-8-jdk
+    name: java-common
     state: present
     update_cache: yes
     cache_valid_time: 3600
+  tags:
+    - java
+
+- name: install corretto
+  become: yes
+  apt:
+    deb: "{{ deb }}"
+    state: present
+  tags:
+    - java
 
 - name: install jenv
   shell: |
@@ -19,11 +24,15 @@
     anyenv install -s jenv
   environment:
     PATH: "{{ anyenv_root }}/bin:{{ ansible_env.PATH }}"
+  tags:
+    - java
 
 - name: enable java
   shell: |
     eval "$(anyenv init -)"
-    jenv add /usr/lib/jvm/java-8-openjdk-amd64
+    jenv add {{ java_home }}
     jenv global {{ java_version }}
   environment:
     PATH: "{{ anyenv_root }}/bin:{{ ansible_env.PATH }}"
+  tags:
+    - java

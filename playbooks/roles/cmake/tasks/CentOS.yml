@@ -3,5 +3,16 @@
 - name: install cmake
   become: yes
   yum:
-    name: cmake3
     state: present
+    name:
+      - cmake3
+  tags:
+    - cmake
+
+- name: symlink
+  file:
+    src: /usr/bin/cmake3
+    dest: /usr/local/bin/cmake
+    state: link
+  tags:
+    - cmake

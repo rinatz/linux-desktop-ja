@@ -1,12 +1,15 @@
 ---
 
-- name: install tk-dev
+- name: install packages
   become: yes
   apt:
-    name: tk-dev
     state: present
     update_cache: yes
     cache_valid_time: 3600
+    name:
+      - tk-dev
+  tags:
+    - python
 
 - name: install pyenv
   shell: |
@@ -14,6 +17,8 @@
     anyenv install -s pyenv
   environment:
     PATH: "{{ anyenv_root }}/bin:{{ ansible_env.PATH }}"
+  tags:
+    - python
 
 - name: install python
   shell: |
@@ -24,3 +29,5 @@
   environment:
     CONFIGURE_OPTS: --enable-shared
     PATH: "{{ anyenv_root }}/bin:{{ ansible_env.PATH }}"
+  tags:
+    - python

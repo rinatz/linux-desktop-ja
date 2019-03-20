@@ -3,8 +3,9 @@
 - name: install packages
   become: yes
   yum:
-    name: "{{ item }}"
     state: present
-  with_items:
-    - fcgi-devel
-    - spawn-fcgi
+    name:
+      - fcgi-devel
+      - spawn-fcgi
+  tags:
+    - fcgi

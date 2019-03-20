@@ -3,8 +3,9 @@
 - name: install fonts
   become: yes
   yum:
-    name: "{{ item }}"
     state: present
-  with_items:
-    - levien-inconsolata-fonts
-    - google-noto-cjk-fonts
+    name:
+      - levien-inconsolata-fonts
+      - google-noto-cjk-fonts
+  tags:
+    - fonts

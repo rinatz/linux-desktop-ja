@@ -3,25 +3,33 @@
 - name: install packages
   become: yes
   yum:
-    name: "{{ item }}"
     state: present
-  with_items:
-    - device-mapper-persistent-data
-    - lvm2
+    name:
+      - device-mapper-persistent-data
+      - lvm2
+  tags:
+    - docker
 
 - name: add yum repository
   become: yes
   shell: yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+  tags:
+    - docker
 
 - name: install docker
   become: yes
   yum:
-    name: docker-ce
     state: present
+    name:
+      - docker-ce
+  tags:
+    - docker
 
 - name: add user to docker group
   become: yes
   shell: usermod -aG docker "{{ ansible_user_id }}"
+  tags:
+    - docker
 
 - name: start docker service
   become: yes
@@ -29,3 +37,5 @@
     name: docker
     state: started
     enabled: yes
+  tags:
+    - docker

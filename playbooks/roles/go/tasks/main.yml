@@ -1,0 +1,20 @@
+---
+
+- name: install goenv
+  shell: |
+    eval "$(anyenv init -)"
+    anyenv install -s goenv
+  environment:
+    PATH: "{{ anyenv_root }}/bin:{{ ansible_env.PATH }}"
+  tags:
+    - go
+
+- name: install go
+  shell: |
+    eval "$(anyenv init -)"
+    goenv install -s {{ go_version }}
+    goenv global {{ go_version }}
+  environment:
+    PATH: "{{ anyenv_root }}/bin:{{ ansible_env.PATH }}"
+  tags:
+    - go

@@ -4,15 +4,25 @@
   become: yes
   timezone:
     name: Asia/Tokyo
+  tags:
+    - setup
 
-- name: add yum repository
+- name: add yum repositories
   become: yes
   yum:
-    name: https://centos7.iuscommunity.org/ius-release.rpm
     state: present
+    name:
+      - epel-release
+      - centos-release-scl
+      - https://centos7.iuscommunity.org/ius-release.rpm
+  tags:
+    - setup
 
-- name: install packages
+- name: install yum-utils
   become: yes
   yum:
-    name: yum-utils
     state: present
+    name:
+      - yum-utils
+  tags:
+    - setup

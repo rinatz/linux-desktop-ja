@@ -4,12 +4,16 @@
   tempfile:
     state: directory
   register: temp
+  tags:
+    - caddy
 
 - name: download
   unarchive:
     src: "https://github.com/mholt/caddy/releases/download/v{{ caddy_version }}/caddy_v{{ caddy_version }}_linux_amd64.tar.gz"
     dest: "{{ temp.path }}"
     remote_src: yes
+  tags:
+    - caddy
 
 - name: copy
   become: yes
@@ -18,8 +22,12 @@
     dest: /usr/local/bin
     mode: +x
     remote_src: yes
+  tags:
+    - caddy
 
 - name: remove temporary directory
   file:
     path: "{{ temp.path }}"
     state: absent
+  tags:
+    - caddy

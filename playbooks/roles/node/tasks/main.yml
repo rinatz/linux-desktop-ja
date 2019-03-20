@@ -1,16 +1,20 @@
 ---
 
-- name: install ndenv
+- name: install nodenv
   shell: |
     eval "$(anyenv init -)"
-    anyenv install -s ndenv
+    anyenv install -s nodenv
   environment:
     PATH: "{{ anyenv_root }}/bin:{{ ansible_env.PATH }}"
+  tags:
+    - node
 
 - name: install node
   shell: |
     eval "$(anyenv init -)"
-    ndenv install -s {{ node_version }}
-    ndenv global {{ node_version }}
+    nodenv install -s {{ node_version }}
+    nodenv global {{ node_version }}
   environment:
     PATH: "{{ anyenv_root }}/bin:{{ ansible_env.PATH }}"
+  tags:
+    - node

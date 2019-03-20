@@ -1,6 +1,0 @@
----
-
-- name: install visual-studio-code
-  shell: yes a | umake ide visual-studio-code ~/.local/share/umake/ide/visual-studio-code
-  args:
-    creates: ~/.local/share/umake/ide/visual-studio-code

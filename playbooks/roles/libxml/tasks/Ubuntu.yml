@@ -1,0 +1,11 @@
+---
+
+- name: install libxml2-utils
+  become: yes
+  apt:
+    name: libxml2-utils
+    state: present
+    update_cache: yes
+    cache_valid_time: 3600
+  tags:
+    - libxml

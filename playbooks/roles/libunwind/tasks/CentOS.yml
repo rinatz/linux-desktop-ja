@@ -1,7 +1,0 @@
----
-
-- name: install package
-  become: yes
-  yum:
-    name: libunwind-devel
-    state: present

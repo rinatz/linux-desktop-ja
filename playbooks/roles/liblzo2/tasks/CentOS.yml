@@ -1,7 +1,0 @@
----
-
-- name: install lzo-devel
-  become: yes
-  yum:
-    name: lzo-devel
-    state: present

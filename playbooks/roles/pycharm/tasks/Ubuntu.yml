@@ -1,6 +1,0 @@
----
-
-- name: install pycharm
-  shell: umake ide pycharm ~/.local/share/umake/ide/pycharm
-  args:
-    creates: ~/.local/share/umake/ide/pycharm

@@ -2,3 +2,6 @@
 
 anyenv_root: "{{ ansible_env.HOME }}/.anyenv"
 java_version: 1.8
+java_home: /usr/lib/jvm/java-1.8.0-amazon-corretto
+deb: https://d2znqt9b1bc64u.cloudfront.net/java-1.8.0-amazon-corretto-jdk_8.202.08-2_amd64.deb
+rpm: https://d2znqt9b1bc64u.cloudfront.net/java-1.8.0-amazon-corretto-devel-1.8.0_202.b08-2.x86_64.rpm

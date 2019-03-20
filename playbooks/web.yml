@@ -2,7 +2,21 @@
 
 - hosts: all
   roles:
+    - caddy
+    - cmake
+    - doxygen
     - docker
     - docker-compose
+    - code-server
     - fcgi
-    - caddy
+    - llvm
+    - ninja
+    - gdb
+    - valgrind
+    - anyenv
+    - go
+    - java
+    - node
+    - python
+    - ruby
+    - rust

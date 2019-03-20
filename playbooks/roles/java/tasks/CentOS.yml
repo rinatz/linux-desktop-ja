@@ -1,9 +1,13 @@
 ---
 
-- name: install java
+- name: install corretto
   become: yes
   yum:
-    name: java-1.8.0-openjdk-devel
+    state: present
+    name:
+      - "{{ rpm }}"
+  tags:
+    - java
 
 - name: install jenv
   shell: |
@@ -11,11 +15,15 @@
     anyenv install -s jenv
   environment:
     PATH: "{{ anyenv_root }}/bin:{{ ansible_env.PATH }}"
+  tags:
+    - java
 
 - name: enable java
   shell: |
     eval "$(anyenv init -)"
-    jenv add /usr/lib/jvm/java-1.8.0
+    jenv add {{ java_home }}
     jenv global {{ java_version }}
   environment:
     PATH: "{{ anyenv_root }}/bin:{{ ansible_env.PATH }}"
+  tags:
+    - java

@@ -1,8 +1,0 @@
----
-
-- name: download idea
-  become: yes
-  unarchive:
-    src: https://download.jetbrains.com/idea/ideaIC-2018.1.2.tar.gz
-    dest: /opt
-    remote_src: yes

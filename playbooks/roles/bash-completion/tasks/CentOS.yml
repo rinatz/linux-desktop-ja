@@ -1,7 +1,0 @@
----
-
-- name: install bash-completion
-  become: yes
-  yum:
-    name: bash-completion
-    state: present

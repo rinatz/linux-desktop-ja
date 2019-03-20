@@ -6,6 +6,8 @@
     anyenv install -s rbenv
   environment:
     PATH: "{{ anyenv_root }}/bin:{{ ansible_env.PATH }}"
+  tags:
+    - ruby
 
 - name: compile dynamic bash extension
   shell: |
@@ -16,6 +18,8 @@
   ignore_errors: yes
   environment:
     PATH: "{{ anyenv_root }}/bin:{{ ansible_env.PATH }}"
+  tags:
+    - ruby
 
 - name: install ruby
   shell: |
@@ -25,3 +29,5 @@
     gem install bundler
   environment:
     PATH: "{{ anyenv_root }}/bin:{{ ansible_env.PATH }}"
+  tags:
+    - ruby

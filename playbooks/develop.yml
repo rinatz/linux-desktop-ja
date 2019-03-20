@@ -1,9 +1,0 @@
----
-
-- hosts: all
-  roles:
-    - anyenv
-    - java
-    - node
-    - python
-    - ruby

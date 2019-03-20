@@ -4,12 +4,16 @@
   tempfile:
     state: directory
   register: temp
+  tags:
+    - bat
 
 - name: download
   unarchive:
     src: "https://github.com/sharkdp/bat/releases/download/v{{ bat_version }}/bat-v{{ bat_version }}-x86_64-unknown-linux-musl.tar.gz"
     dest: "{{ temp.path }}"
     remote_src: yes
+  tags:
+    - bat
 
 - name: copy
   become: yes
@@ -18,8 +22,12 @@
     dest: /usr/local/bin
     mode: +x
     remote_src: yes
+  tags:
+    - bat
 
 - name: remove temporary directory
   file:
     path: "{{ temp.path }}"
     state: absent
+  tags:
+    - bat
