@@ -15,7 +15,7 @@
 
 - name: add apt key
   become: yes
-  shell: apt-key adv --fetch-keys=https://download.docker.com/linux/ubuntu/gpg
+  shell: curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
   tags:
     - docker
 

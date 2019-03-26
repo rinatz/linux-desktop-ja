@@ -16,9 +16,12 @@
   tags:
     - setup
 
-- name: update repositories
+- name: upgrade packages
   become: yes
   apt:
+    state: latest
     update_cache: yes
+    force_apt_get: yes
+    name: "*"
   tags:
     - setup

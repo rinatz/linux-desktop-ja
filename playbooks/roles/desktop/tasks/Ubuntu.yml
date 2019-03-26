@@ -1,0 +1,77 @@
+---
+
+- name: add apt repository
+  become: yes
+  apt_repository:
+    state: present
+    repo: ppa:japaneseteam/ppa
+  tags:
+    - desktop
+
+- name: install packages
+  become: yes
+  apt:
+    state: present
+    update_cache: yes
+    cache_valid_time: 3600
+    name:
+      - lubuntu-desktop
+      - xrdp
+      - ubuntu-defaults-ja
+  tags:
+    - desktop
+
+- name: install language support
+  become: yes
+  shell: apt-get install -y $(check-language-support)
+  args:
+    warn: no
+  tags:
+    - desktop
+
+- name: set input method
+  shell: im-config -n fcitx
+  tags:
+    - desktop
+
+- name: copy dotfiles
+  copy:
+    src: "{{ item }}"
+    dest: ~/
+    mode: 0644
+  with_items:
+    - .Xresources
+    - .xsession
+  tags:
+    - desktop
+
+- name: copy keymap file
+  become: yes
+  copy:
+    src: km-0411.ini
+    dest: /etc/xrdp
+    mode: 0644
+    owner: xrdp
+    group: xrdp
+  tags:
+    - desktop
+
+- name: create keymap files
+  become: yes
+  file:
+    src: /etc/xrdp/km-0411.ini
+    dest: "/etc/xrdp/{{ item }}"
+    state: link
+  with_items:
+    - km-e0200411.ini
+    - km-e0010411.ini
+  tags:
+    - desktop
+
+- name: restart xrdp
+  become: yes
+  service:
+    state: restarted
+    name: xrdp
+  tags:
+    - desktop

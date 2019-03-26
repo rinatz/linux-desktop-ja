@@ -1,0 +1,16 @@
+---
+
+- name: install packages
+  become: yes
+  yum:
+    state: present
+    name:
+      - "@^gnome-desktop-environment"
+  tags:
+    - desktop
+
+- name: set default to graphical target
+  become: yes
+  shell: systemctl set-default graphical.target
+  tags:
+    - desktop

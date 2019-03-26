@@ -26,3 +26,11 @@
       - yum-utils
   tags:
     - setup
+
+- name: update packages
+  become: yes
+  yum:
+    state: latest
+    name: "*"
+  tags:
+    - setup
