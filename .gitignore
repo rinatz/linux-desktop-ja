@@ -1,20 +1,6 @@
 
-# Created by https://www.gitignore.io/api/vagrant
-
-### Vagrant ###
-.vagrant/
-*.box
-
-# End of https://www.gitignore.io/api/vagrant
-
-# Created by https://www.gitignore.io/api/ansible
-
-### Ansible ###
-*.retry
-
-# End of https://www.gitignore.io/api/ansible
-
 # Created by https://www.gitignore.io/api/packer
+# Edit at https://www.gitignore.io/?templates=packer
 
 ### Packer ###
 # Cache objects
@@ -23,5 +9,27 @@ packer_cache/
 # For built boxes
 *.box
 
-
 # End of https://www.gitignore.io/api/packer
+
+# Created by https://www.gitignore.io/api/vagrant
+# Edit at https://www.gitignore.io/?templates=vagrant
+
+### Vagrant ###
+# General
+.vagrant/
+
+# Log files (if you are creating logs in debug mode, uncomment this)
+# *.logs
+
+### Vagrant Patch ###
+*.box
+
+# End of https://www.gitignore.io/api/vagrant
+
+# Created by https://www.gitignore.io/api/ansible
+# Edit at https://www.gitignore.io/?templates=ansible
+
+### Ansible ###
+*.retry
+
+# End of https://www.gitignore.io/api/ansible
