@@ -34,8 +34,8 @@
             "playbook_dir": "playbooks",
             "playbook_file": "playbooks/site.yml",
             "extra_arguments": [
-                "--tags {{user `ansible_tags`}}",
-                "--skip-tags {{user `ansible_skip_tags`}}"
+                "--tags {{ user `ansible_tags` }}",
+                "--skip-tags {{ user `ansible_skip_tags` }}"
             ]
         }
     ],
