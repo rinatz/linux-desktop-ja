@@ -25,14 +25,18 @@
             "type": "shell",
             "execute_command": "echo 'vagrant' | sudo -S '{{ .Path }}'",
             "scripts": [
-                "yum.sh",
-                "provision.sh"
+                "scripts/yum.sh",
+                "scripts/provision.sh"
             ]
         },
         {
             "type": "ansible-local",
             "playbook_dir": "playbooks",
-            "playbook_file": "playbooks/site.yml"
+            "playbook_file": "playbooks/site.yml",
+            "extra_arguments": [
+                "--tags {{user `ansible_tags`}}",
+                "--skip-tags {{user `ansible_skip_tags`}}"
+            ]
         }
     ],
     "post-processors": [
@@ -41,5 +45,9 @@
             "output": "centos-7-desktop.box",
             "vagrantfile_template": "Vagrantfile"
         }
-    ]
+    ],
+    "variables": {
+        "ansible_tags": "untagged",
+        "ansible_skip_tags": "tagged"
+    }
 }

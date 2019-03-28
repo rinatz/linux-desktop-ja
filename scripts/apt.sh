@@ -1,6 +1,8 @@
 #!/bin/bash
 set -eux
 
+export DEBIAN_FRONTEND=noninteractive
+
 function main() {
   sed -i 's,http://\(.*\.\)\?archive.ubuntu.com,http://jp.archive.ubuntu.com,g' /etc/apt/sources.list
   apt-get update
