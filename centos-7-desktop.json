@@ -28,6 +28,11 @@
                 "yum.sh",
                 "provision.sh"
             ]
+        },
+        {
+            "type": "ansible-local",
+            "playbook_dir": "playbooks",
+            "playbook_file": "playbooks/site.yml"
         }
     ],
     "post-processors": [
