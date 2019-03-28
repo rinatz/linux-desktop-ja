@@ -17,6 +17,8 @@
     name:
       - lubuntu-desktop
       - xrdp
+      - libqt5gui5
+      - fcitx-frontend-qt5
       - ubuntu-defaults-ja
   tags:
     - desktop
