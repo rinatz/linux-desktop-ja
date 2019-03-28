@@ -8,7 +8,7 @@
                 "http://cdimage.ubuntu.com/lubuntu/releases/14.04.5/release/lubuntu-14.04.5-desktop-amd64.iso"
             ],
             "keep_registered": true,
-            "iso_checksum": "42753404caf366471dd412b604a0473624ce26113f66932bc5efb43cee8e1701",
+            "iso_checksum": "c05f756554ec4e546bfa130215ec1cbe3905fb6b43db41c6da967d96419bce9b",
             "iso_checksum_type": "sha256",
             "ssh_username": "vagrant",
             "ssh_password": "vagrant",
@@ -28,6 +28,11 @@
                 "apt.sh",
                 "provision.sh"
             ]
+        },
+        {
+            "type": "ansible-local",
+            "playbook_dir": "playbooks",
+            "playbook_file": "playbooks/site.yml"
         }
     ],
     "post-processors": [
