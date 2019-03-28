@@ -1,0 +1,53 @@
+{
+    "builders": [
+        {
+            "type": "virtualbox-iso",
+            "guest_os_type": "Ubuntu_64",
+            "iso_urls": [
+                "lubuntu-16.04.6-desktop-amd64.iso",
+                "http://cdimage.ubuntu.com/lubuntu/releases/16.04/release/lubuntu-16.04.6-desktop-amd64.iso"
+            ],
+            "keep_registered": true,
+            "iso_checksum": "d069c1595b91673648b72664bcaffa8f0dad908e0010332bf847cdaab4f87229",
+            "iso_checksum_type": "sha256",
+            "ssh_username": "vagrant",
+            "ssh_password": "vagrant",
+            "shutdown_command": "echo 'vagrant' | sudo -S shutdown -P now",
+            "disk_size": 512000,
+            "cpus": 2,
+            "memory": 4096,
+            "ssh_wait_timeout": "1h",
+            "virtualbox_version_file": ""
+        }
+    ],
+    "provisioners": [
+        {
+            "type": "shell",
+            "execute_command": "echo 'vagrant' | sudo -S '{{ .Path }}'",
+            "scripts": [
+                "scripts/apt.sh",
+                "scripts/provision.sh"
+            ]
+        },
+        {
+            "type": "ansible-local",
+            "playbook_dir": "playbooks",
+            "playbook_file": "playbooks/site.yml",
+            "extra_arguments": [
+                "--tags {{ user `ansible_tags` }}",
+                "--skip-tags {{ user `ansible_skip_tags` }}"
+            ]
+        }
+    ],
+    "post-processors": [
+        {
+            "type": "vagrant",
+            "output": "lubuntu-16.04-desktop.box",
+            "vagrantfile_template": "Vagrantfile"
+        }
+    ],
+    "variables": {
+        "ansible_tags": "untagged",
+        "ansible_skip_tags": "tagged"
+    }
+}
