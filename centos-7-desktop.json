@@ -4,11 +4,11 @@
             "type": "virtualbox-iso",
             "guest_os_type": "Ubuntu_64",
             "iso_urls": [
-                "lubuntu-14.04.5-desktop-amd64.iso",
-                "http://cdimage.ubuntu.com/lubuntu/releases/14.04.5/release/lubuntu-14.04.5-desktop-amd64.iso"
+                "CentOS-7-x86_64-DVD-1810.iso",
+                "http://ftp.yz.yamagata-u.ac.jp/pub/linux/centos/7/isos/x86_64/CentOS-7-x86_64-Everything-1810.iso"
             ],
             "keep_registered": true,
-            "iso_checksum": "42753404caf366471dd412b604a0473624ce26113f66932bc5efb43cee8e1701",
+            "iso_checksum": "6d44331cc4f6c506c7bbe9feb8468fad6c51a88ca1393ca6b8b486ea04bec3c1",
             "iso_checksum_type": "sha256",
             "ssh_username": "vagrant",
             "ssh_password": "vagrant",
@@ -25,7 +25,7 @@
             "type": "shell",
             "execute_command": "echo 'vagrant' | sudo -S '{{ .Path }}'",
             "scripts": [
-                "apt.sh",
+                "yum.sh",
                 "provision.sh"
             ]
         }
@@ -33,7 +33,7 @@
     "post-processors": [
         {
             "type": "vagrant",
-            "output": "lubuntu-14.04-desktop.box",
+            "output": "centos-7-desktop.box",
             "vagrantfile_template": "Vagrantfile"
         }
     ]

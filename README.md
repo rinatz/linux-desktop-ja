@@ -39,3 +39,4 @@ $ packer build TEMPLATE
 `TEMPLATE` には作成したいイメージに応じて下記のいずれかを指定して下さい。
 
 - lubuntu-14.04-desktop.json
+- centos-7-desktop.json

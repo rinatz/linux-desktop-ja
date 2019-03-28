@@ -1,12 +1,6 @@
 #!/bin/bash
 set -eux
 
-function update() {
-  sed -i 's,http://\(.*\.\)\?archive.ubuntu.com,http://jp.archive.ubuntu.com,g' /etc/apt/sources.list
-  apt-get update
-  apt-get install -y linux-headers-$(uname -r) build-essential dkms openssh-server curl
-}
-
 function sudoers() {
   echo "vagrant ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/vagrant
 }
@@ -33,7 +27,6 @@ function virtualbox() {
 }
 
 function main() {
-  update
   sudoers
   sshd
   vagrant
