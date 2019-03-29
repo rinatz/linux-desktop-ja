@@ -40,3 +40,11 @@ $ packer build TEMPLATE
 
 - lubuntu-14.04-desktop.json
 - centos-7-desktop.json
+
+`ansible_tags, ansible_skip_tags` という変数に Ansible のタグを指定することができます。`playbooks` 配下の各ロール名に合わせたタグ名をカンマ区切りで指定して下さい。デフォルトではどのロールも実行しません。
+
+**例**
+
+```shell
+$ packer build -var 'ansible_tags=setup,scm,buildpack' lubuntu-14.04-desktop.json
+```
