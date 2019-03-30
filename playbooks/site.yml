@@ -2,5 +2,5 @@
 
 - import_playbook: base.yml
 - import_playbook: tools.yml
-- import_playbook: web.yml
+- import_playbook: develop.yml
 - import_playbook: desktop.yml
