@@ -39,6 +39,7 @@ $ packer build TEMPLATE
 `TEMPLATE` には作成したいイメージに応じて下記のいずれかを指定して下さい。
 
 - lubuntu-14.04-desktop.json
+- lubuntu-16.04-desktop.json
 - centos-7-desktop.json
 
 `ansible_tags, ansible_skip_tags` という変数に Ansible のタグを指定することができます。`playbooks` 配下の各ロール名に合わせたタグ名をカンマ区切りで指定して下さい。デフォルトではどのロールも実行しません。
