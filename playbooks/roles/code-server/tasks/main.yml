@@ -9,7 +9,7 @@
 
 - name: download
   unarchive:
-    src: "https://github.com/codercom/code-server/releases/download/{{ code_server_version }}/code-server-{{ code_server_version }}-linux-x64.tar.gz"
+    src: "https://github.com/codercom/code-server/releases/download/{{ code_server_version }}/code-server{{ code_server_version }}-linux-x64.tar.gz"
     dest: "{{ temp.path }}"
     remote_src: yes
   tags:
@@ -18,7 +18,7 @@
 - name: copy
   become: yes
   copy:
-    src: "{{ temp.path }}/code-server-{{ code_server_version }}-linux-x64/code-server"
+    src: "{{ temp.path }}/code-server{{ code_server_version }}-linux-x64/code-server"
     dest: /usr/local/bin
     mode: +x
     remote_src: yes
