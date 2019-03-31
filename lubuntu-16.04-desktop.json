@@ -17,7 +17,8 @@
             "cpus": 2,
             "memory": 4096,
             "ssh_wait_timeout": "1h",
-            "virtualbox_version_file": ""
+            "virtualbox_version_file": "",
+            "vm_name": "lubuntu-16.04-desktop"
         }
     ],
     "provisioners": [
