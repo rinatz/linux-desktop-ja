@@ -1,9 +1,0 @@
----
-
-- hosts: all
-  roles:
-    - setup
-    - scm
-    - buildpack
-    - fonts
-    - dotfiles
